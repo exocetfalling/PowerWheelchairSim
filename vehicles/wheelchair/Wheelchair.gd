@@ -10,7 +10,7 @@ var input_joystick : Vector2 = Vector2.ZERO
 var linear_velocity_local : Vector3 = Vector3.ZERO
 var angular_velocity_local : Vector3 = Vector3.ZERO
 
-var steering_angle : float = 0.00
+var steering_angle_target : float = 0.00
 
 var wheel_speed_rear_left = 0.00
 var wheel_speed_rear_right = 0.00
@@ -22,6 +22,17 @@ func _ready():
 	DebugOverlay.stats.add_property(self, "steering_angle", "")
 	pass # Replace with function body.
 
+func interpolate_linear(value_current, value_target, rate, delta_time):
+	if (abs(value_current - value_target) > delta_time):
+		if (value_current < value_target):
+			return value_current + rate * delta_time
+		if (value_current > value_target):
+			return value_current - rate * delta_time
+		else:
+			return value_target
+	else:
+		return value_target
+
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	get_input(delta)
@@ -31,12 +42,14 @@ func _physics_process(delta):
 	
 #	steering_angle = atan2((linear_velocity_local.x - angular_velocity.y * 0.22), -linear_velocity_local.z)
 #	steering_angle = atan2(angular_velocity.y * 0.22, -linear_velocity_local.z)
-#	steering_angle = input_joystick.x * PI / 2
+	steering_angle_target = rad2deg(atan2((-linear_velocity_local.x + angular_velocity.y * 0.22), -linear_velocity_local.z))
 	
-	$WheelRearLeft.engine_force = -20 * input_joystick.y - 20 * input_joystick.x
-	$WheelRearRight.engine_force = -20 * input_joystick.y + 20 * input_joystick.x
+	$WheelRearLeft.engine_force = -20 * input_joystick.y - 40 * input_joystick.x
+	$WheelRearRight.engine_force = -20 * input_joystick.y + 40 * input_joystick.x
 	
-	steering = input_joystick.x * -90 * (1 / (linear_velocity.length() + 1))
+#	steering = input_joystick.x * -90 * (1 / (linear_velocity.length() + 1))
+#	steering = rad2deg(atan2(angular_velocity.y * 0.22, -linear_velocity_local.z))
+	steering = interpolate_linear(steering, steering_angle_target, 60, delta)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
