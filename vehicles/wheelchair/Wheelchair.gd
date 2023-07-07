@@ -44,8 +44,8 @@ func _physics_process(delta):
 #	steering_angle = atan2(angular_velocity.y * 0.22, -linear_velocity_local.z)
 	steering_angle_target = rad2deg(atan2((-linear_velocity_local.x + angular_velocity.y * 0.22), -linear_velocity_local.z))
 	
-	$WheelRearLeft.engine_force = -20 * input_joystick.y - 40 * input_joystick.x
-	$WheelRearRight.engine_force = -20 * input_joystick.y + 40 * input_joystick.x
+	$WheelRearLeft.engine_force = -40 * input_joystick.y - 40 * input_joystick.x
+	$WheelRearRight.engine_force = -40 * input_joystick.y + 40 * input_joystick.x
 	
 #	steering = input_joystick.x * -90 * (1 / (linear_velocity.length() + 1))
 #	steering = rad2deg(atan2(angular_velocity.y * 0.22, -linear_velocity_local.z))
