@@ -41,10 +41,10 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, -0.21, 0.173 )
 use_as_traction = true
 wheel_radius = 0.28
-wheel_rest_length = 0.002
+wheel_rest_length = 0.018
 wheel_friction_slip = 0.8
 suspension_travel = 0.02
-suspension_stiffness = 200.0
+suspension_stiffness = 190.0
 damping_compression = 0.95
 damping_relaxation = 0.98
 
@@ -52,10 +52,10 @@ damping_relaxation = 0.98
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245, -0.21, 0.173 )
 use_as_traction = true
 wheel_radius = 0.28
-wheel_rest_length = 0.002
+wheel_rest_length = 0.018
 wheel_friction_slip = 0.8
 suspension_travel = 0.02
-suspension_stiffness = 200.0
+suspension_stiffness = 190.0
 damping_compression = 0.95
 damping_relaxation = 0.98
 
