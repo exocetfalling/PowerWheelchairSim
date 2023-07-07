@@ -30,12 +30,13 @@ func _physics_process(delta):
 	angular_velocity_local = global_transform.basis.z * (angular_velocity)
 	
 #	steering_angle = atan2((linear_velocity_local.x - angular_velocity.y * 0.22), -linear_velocity_local.z)
-	steering_angle = atan2(angular_velocity.y * 0.22, -linear_velocity_local.z)
+#	steering_angle = atan2(angular_velocity.y * 0.22, -linear_velocity_local.z)
+#	steering_angle = input_joystick.x * PI / 2
 	
 	$WheelRearLeft.engine_force = -20 * input_joystick.y - 20 * input_joystick.x
 	$WheelRearRight.engine_force = -20 * input_joystick.y + 20 * input_joystick.x
 	
-	steering = rad2deg(steering_angle)
+	steering = input_joystick.x * -90 * (1 / (linear_velocity.length() + 1))
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,8 +44,8 @@ func _process(delta):
 	$Model/WheelRearLeft.rotation = $WheelRearLeft.rotation
 	$Model/WheelRearRight.rotation = $WheelRearRight.rotation
 	
-	$Model/CastorLeft.rotation.y = deg2rad(steering_angle)
-	$Model/CastorRight.rotation.y = deg2rad(steering_angle)
+	$Model/CastorLeft.rotation.y = deg2rad(steering)
+	$Model/CastorRight.rotation.y = deg2rad(steering)
 	
 	$Model/CastorLeft/WheelFrontLeft.rotation.x = $WheelFrontLeft.rotation.x
 	$Model/CastorRight/WheelFrontRight.rotation.x = $WheelFrontRight.rotation.x
