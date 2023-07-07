@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://wheelchair_model.tscn" type="PackedScene" id=1]
+[ext_resource path="res://vehicles/wheelchair/Wheelchair.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.206764, 0.268336, 0.0142708 )
+
+[node name="Wheelchair" type="VehicleBody"]
+continuous_cd = true
+script = ExtResource( 2 )
+
+[node name="CollisionShapeSeat" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0738329, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShapeBack" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0493933, 0.187811 )
+shape = SubResource( 1 )
+
+[node name="Model" parent="." instance=ExtResource( 1 )]
+
+[node name="WheelRearLeft" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, -0.21, 0.173 )
+use_as_traction = true
+wheel_radius = 0.28
+wheel_rest_length = 0.002
+wheel_friction_slip = 1.0
+suspension_travel = 0.05
+suspension_stiffness = 200.0
+damping_compression = 0.95
+damping_relaxation = 0.98
+
+[node name="WheelRearRight" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245, -0.21, 0.173 )
+use_as_traction = true
+wheel_radius = 0.28
+wheel_rest_length = 0.002
+wheel_friction_slip = 1.0
+suspension_travel = 0.05
+suspension_stiffness = 200.0
+damping_compression = 0.95
+damping_relaxation = 0.98
+
+[node name="WheelFrontLeft" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, -0.412604, -0.218373 )
+use_as_steering = true
+wheel_radius = 0.08
+wheel_rest_length = 0.002
+wheel_friction_slip = 1.0
+suspension_travel = 0.1
+suspension_stiffness = 200.0
+suspension_max_force = 1000.0
+damping_compression = 0.95
+damping_relaxation = 0.98
+
+[node name="WheelFrontRight" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245, -0.413, -0.218 )
+use_as_steering = true
+wheel_radius = 0.08
+wheel_rest_length = 0.002
+wheel_friction_slip = 1.0
+suspension_travel = 0.1
+suspension_stiffness = 200.0
+suspension_max_force = 1000.0
+damping_compression = 0.95
+damping_relaxation = 0.98
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.955051, 0.296442, 0, -0.296442, 0.955051, 0, 0.35989, 1.17001 )
+far = 10000.0
