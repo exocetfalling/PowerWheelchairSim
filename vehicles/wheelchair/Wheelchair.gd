@@ -51,8 +51,8 @@ func _physics_process(delta):
 			)
 	# Ensures steering target ranges from -180 to +180 instead of 0 to 360
 	# For better interpolation
-	if (steering_angle_target > 180):
-		steering_angle_target - 360
+#	if (steering_angle_target > 180):
+#		steering_angle_target - 360
 	
 #	$WheelRearLeft.engine_force = -40 * input_joystick.y - 40 * input_joystick.x
 #	$WheelRearRight.engine_force = -40 * input_joystick.y + 40 * input_joystick.x
@@ -66,7 +66,9 @@ func _physics_process(delta):
 	
 	
 	# Interpolate steering angles
-	steering = lerp_angle(steering, steering_angle_target, 0.5)
+	# Convert to rad. for proper use of lerp_angle()
+	# Convert back to deg. for steering
+	steering = rad2deg(lerp_angle(deg2rad(steering), deg2rad(steering_angle_target), 0.1))
 	
 #	steering = interpolate_linear(steering, steering_angle_target, 60, delta)
 	
