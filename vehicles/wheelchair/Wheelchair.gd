@@ -19,7 +19,7 @@ var wheel_speed_rear_right = 0.00
 func _ready():
 	DebugOverlay.stats.add_property(self, "input_joystick", "round")
 	DebugOverlay.stats.add_property(self, "angular_velocity_local", "round")
-	DebugOverlay.stats.add_property(self, "steering_angle", "")
+	DebugOverlay.stats.add_property(self, "steering_angle_target", "round")
 	pass # Replace with function body.
 
 func interpolate_linear(value_current, value_target, rate, delta_time):
@@ -42,18 +42,30 @@ func _physics_process(delta):
 	
 #	steering_angle = atan2((linear_velocity_local.x - angular_velocity.y * 0.22), -linear_velocity_local.z)
 #	steering_angle = atan2(angular_velocity.y * 0.22, -linear_velocity_local.z)
-	steering_angle_target = rad2deg(atan2((-linear_velocity_local.x + angular_velocity.y * 0.22), -linear_velocity_local.z))
+
+	# Simulate castering front wheels
+	steering_angle_target = \
+			( \
+			rad2deg(atan2((-linear_velocity_local.x + \
+			angular_velocity.y * 0.22), -linear_velocity_local.z)) \
+			)
+	# Ensures steering target ranges from -180 to +180 instead of 0 to 360
+	# For better interpolation
+	if (steering_angle_target > 180):
+		steering_angle_target - 360
 	
 	$WheelRearLeft.engine_force = -40 * input_joystick.y - 40 * input_joystick.x
 	$WheelRearRight.engine_force = -40 * input_joystick.y + 40 * input_joystick.x
 	
-#	steering = input_joystick.x * -90 * (1 / (linear_velocity.length() + 1))
-#	steering = rad2deg(atan2(angular_velocity.y * 0.22, -linear_velocity_local.z))
-	steering = interpolate_linear(steering, steering_angle_target, 60, delta)
+	# Interpolate steering angles
+	steering = lerp_angle(steering, steering_angle_target, 0.5)
+	
+#	steering = interpolate_linear(steering, steering_angle_target, 60, delta)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Animations 
 	$Model/WheelRearLeft.rotation = $WheelRearLeft.rotation
 	$Model/WheelRearRight.rotation = $WheelRearRight.rotation
 	

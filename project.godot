@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "HTerrainDataSaver",
 "language": "GDScript",
 "path": "res://addons/zylann.hterrain/hterrain_resource_saver.gd"
+}, {
+"base": "Node",
+"class": "PID_Calc",
+"language": "GDScript",
+"path": "res://scripts/pid_calc.gd"
 } ]
 _global_script_class_icons={
 "Derivative_Calc": "",
 "HTerrainDataLoader": "",
-"HTerrainDataSaver": ""
+"HTerrainDataSaver": "",
+"PID_Calc": ""
 }
 
 [application]
