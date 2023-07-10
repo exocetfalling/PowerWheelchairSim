@@ -54,13 +54,23 @@ func _physics_process(delta):
 	if (steering_angle_target > 180):
 		steering_angle_target - 360
 	
-	$WheelRearLeft.engine_force = -40 * input_joystick.y - 40 * input_joystick.x
-	$WheelRearRight.engine_force = -40 * input_joystick.y + 40 * input_joystick.x
+#	$WheelRearLeft.engine_force = -40 * input_joystick.y - 40 * input_joystick.x
+#	$WheelRearRight.engine_force = -40 * input_joystick.y + 40 * input_joystick.x
+	
+	$WheelRearLeft.engine_force = -40 * \
+			$PIDCalcWheelLeft.calc_PID_output(2 * input_joystick.y, -linear_velocity_local.z) \
+			- 40 * input_joystick.x
+	$WheelRearRight.engine_force = -40 * \
+			$PIDCalcWheelRight.calc_PID_output(2 * input_joystick.y, -linear_velocity_local.z) \
+			+ 40 * input_joystick.x
+	
 	
 	# Interpolate steering angles
 	steering = lerp_angle(steering, steering_angle_target, 0.5)
 	
 #	steering = interpolate_linear(steering, steering_angle_target, 60, delta)
+	
+	
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

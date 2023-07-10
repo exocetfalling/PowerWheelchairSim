@@ -1,6 +1,6 @@
 extends Node
 
-class_name PID_Calc
+class_name PIDCalc
 # Declare member variables here. Examples:
 # var a: int = 2
 # var b: String = "text"
