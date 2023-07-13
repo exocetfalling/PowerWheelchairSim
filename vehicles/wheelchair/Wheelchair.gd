@@ -11,6 +11,7 @@ var linear_velocity_local : Vector3 = Vector3.ZERO
 var angular_velocity_local : Vector3 = Vector3.ZERO
 
 var steering_angle_target : float = 0.00
+var steering_lerp_factor : float = 0.2
 
 var wheel_speed_rear_left = 0.00
 var wheel_speed_rear_right = 0.00
@@ -64,11 +65,14 @@ func _physics_process(delta):
 			$PIDCalcWheelRight.calc_PID_output(2 * input_joystick.y, -linear_velocity_local.z) \
 			+ 40 * input_joystick.x
 	
+	# Increase caster turn rate as velocity increases
+	# Clamping from 0 to 1
+	steering_lerp_factor = clamp((linear_velocity_local.length()), 0, 1)
 	
 	# Interpolate steering angles
 	# Convert to rad. for proper use of lerp_angle()
 	# Convert back to deg. for steering
-	steering = rad2deg(lerp_angle(deg2rad(steering), deg2rad(steering_angle_target), 0.1))
+	steering = rad2deg(lerp_angle(deg2rad(steering), deg2rad(steering_angle_target), steering_lerp_factor))
 	
 #	steering = interpolate_linear(steering, steering_angle_target, 60, delta)
 	
@@ -91,5 +95,5 @@ func _process(delta):
 
 func get_input(delta):
 	# Joystick input as axes
-	input_joystick.x = Input.get_axis("ui_left", "ui_right")
-	input_joystick.y = Input.get_axis("ui_down", "ui_up")
+	input_joystick.x = Input.get_axis("joystick_left", "joystick_right")
+	input_joystick.y = Input.get_axis("joystick_down", "joystick_up")
