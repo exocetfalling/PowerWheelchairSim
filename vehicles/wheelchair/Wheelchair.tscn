@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://wheelchair_model.tscn" type="PackedScene" id=1]
+[ext_resource path="res://vehicles/wheelchair/model/wheelchair_model.tscn" type="PackedScene" id=1]
 [ext_resource path="res://vehicles/wheelchair/Wheelchair.gd" type="Script" id=2]
 [ext_resource path="res://scripts/pid_calc.gd" type="Script" id=3]
 
