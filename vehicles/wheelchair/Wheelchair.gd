@@ -59,10 +59,10 @@ func _physics_process(delta):
 #	$WheelRearRight.engine_force = -40 * input_joystick.y + 40 * input_joystick.x
 	
 	$WheelRearLeft.engine_force = -40 * \
-			$PIDCalcWheelLeft.calc_PID_output(2 * input_joystick.y, -linear_velocity_local.z) \
+			$PIDCalcWheelLeft.calc_PID_output(4 * input_joystick.y, -linear_velocity_local.z) \
 			- 40 * input_joystick.x
 	$WheelRearRight.engine_force = -40 * \
-			$PIDCalcWheelRight.calc_PID_output(2 * input_joystick.y, -linear_velocity_local.z) \
+			$PIDCalcWheelRight.calc_PID_output(4 * input_joystick.y, -linear_velocity_local.z) \
 			+ 40 * input_joystick.x
 	
 	# Increase caster turn rate as velocity increases

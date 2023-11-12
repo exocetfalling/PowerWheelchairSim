@@ -85,7 +85,7 @@ damping_compression = 0.95
 damping_relaxation = 0.98
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.955051, 0.296442, 0, -0.296442, 0.955051, 0, 0.35989, 1.17001 )
+transform = Transform( 1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0.6, 1 )
 far = 10000.0
 
 [node name="PIDCalcWheelLeft" type="Node" parent="."]
