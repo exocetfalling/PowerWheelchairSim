@@ -97,3 +97,7 @@ param_tuning_active = false
 script = ExtResource( 3 )
 term_P = 0.5
 param_tuning_active = false
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+visible = false
+radius = 0.1
