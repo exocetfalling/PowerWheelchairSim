@@ -22,3 +22,18 @@ action_left = "joystick_left"
 action_right = "joystick_right"
 action_up = "joystick_up"
 action_down = "joystick_down"
+
+[node name="Display" type="Control" parent="."]
+anchor_top = 0.8
+anchor_right = 0.2
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="SpeedBar" type="ProgressBar" parent="Display"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 0.2
+margin_right = 4.0
+margin_bottom = 14.0
+rounded = true

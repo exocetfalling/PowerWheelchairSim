@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://terrain/basic_terrain/basic_terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://vehicles/wheelchair/Wheelchair.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/modern_house/modern_house.tscn" type="PackedScene" id=3]
-[ext_resource path="res://uires/hud_basic/hud_basic.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ProceduralSky" id=1]
+sun_energy = 0.5
 
 [sub_resource type="Environment" id=2]
 background_mode = 2
@@ -60,9 +60,7 @@ depth = 8.0
 transform = Transform( -1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 400, -800 )
 shadow_enabled = true
 directional_shadow_depth_range = 1
-directional_shadow_max_distance = 10.0
+directional_shadow_max_distance = 1000.0
 
 [node name="modern_house" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0 )
-
-[node name="HUDBasic" parent="." instance=ExtResource( 4 )]
