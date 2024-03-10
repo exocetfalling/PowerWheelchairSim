@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/fonts/hud_font.tres" type="DynamicFont" id=2]
 
 [node name="HUDBasic" type="Control"]
 anchor_left = 0.02
@@ -23,17 +24,20 @@ action_right = "joystick_right"
 action_up = "joystick_up"
 action_down = "joystick_down"
 
-[node name="Display" type="Control" parent="."]
-anchor_top = 0.8
+[node name="Display" type="VBoxContainer" parent="."]
+anchor_top = 0.7
 anchor_right = 0.2
 anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
 
-[node name="SpeedBar" type="ProgressBar" parent="Display"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 0.2
-margin_right = 4.0
-margin_bottom = 14.0
-rounded = true
+[node name="Speed" type="Label" parent="Display"]
+margin_right = 429.0
+margin_bottom = 73.0
+custom_fonts/font = ExtResource( 2 )
+text = "SPEED: XX.X"
+
+[node name="Range" type="Label" parent="Display"]
+margin_top = 77.0
+margin_right = 429.0
+margin_bottom = 150.0
+custom_fonts/font = ExtResource( 2 )
+text = "RANGE: XX.X"

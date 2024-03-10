@@ -22,14 +22,18 @@ var turn_radius: float = 0.00
 var wheel_velocity_ratio: float = 0.00
 export var wheelbase_width: float = 0.49
 
+var wheel_speed_rear_left_tgt: float = 0.00
+var wheel_speed_rear_right_tgt: float = 0.00
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	DebugOverlay.stats.add_property(self, "input_joystick", "round")
+	DebugOverlay.stats.add_property(self, "input_joystick", "round")
 #	DebugOverlay.stats.add_property(self, "angular_velocity_local", "round")
 #	DebugOverlay.stats.add_property(self, "steering_angle_target", "round")
 #	DebugOverlay.stats.add_property(self, "steering", "round")
 #	DebugOverlay.stats.add_property(self, "wheel_velocity_ratio", "")
 #	DebugOverlay.stats.add_property(self, "turn_radius", "")
+	DebugOverlay.stats.add_property(self, "linear_velocity_local", "round")
 	pass # Replace with function body.
 
 func interpolate_linear(value_current, value_target, rate, delta_time):
@@ -57,15 +61,16 @@ func _physics_process(delta):
 	steering_angle_target_l = atan2(0.391, (turn_radius + $WheelFrontLeft.translation.x))
 	steering_angle_target_r = atan2(0.391, (turn_radius + $WheelFrontRight.translation.x))
 	
-#	$WheelRearLeft.engine_force = -40 * input_joystick.y - 40 * input_joystick.x
-#	$WheelRearRight.engine_force = -40 * input_joystick.y + 40 * input_joystick.x
+	wheel_speed_rear_left_tgt = \
+		-(+3 * input_joystick.x + 2 * input_joystick.y) / 0.3
 	
-	$WheelRearLeft.engine_force = -40 * \
-			$PIDCalcWheelLeft.calc_PID_output(2 * input_joystick.y, -linear_velocity_local.z) \
-			- 20 * input_joystick.x
-	$WheelRearRight.engine_force = -40 * \
-			$PIDCalcWheelRight.calc_PID_output(2 * input_joystick.y, -linear_velocity_local.z) \
-			+ 20 * input_joystick.x
+	wheel_speed_rear_right_tgt = \
+		-(-3 * input_joystick.x + 2 * input_joystick.y) / 0.3
+	
+	$WheelRearLeft.engine_force = \
+		$PIDCalcWheelLeft.calc_PID_output(wheel_speed_rear_left_tgt, wheel_speed_rear_left)
+	$WheelRearRight.engine_force = \
+		$PIDCalcWheelRight.calc_PID_output(wheel_speed_rear_right_tgt, wheel_speed_rear_right)
 	
 	
 	# Increase caster turn rate as velocity increases
@@ -116,10 +121,10 @@ func _process(delta):
 	$Model/CastorLeft.rotation.y = deg2rad($WheelFrontLeft.steering)
 	$Model/CastorRight.rotation.y = deg2rad($WheelFrontRight.steering)
 	
-	
 	$Model/CastorLeft/WheelFrontLeft.rotation.x = $WheelFrontLeft.rotation.x
 	$Model/CastorRight/WheelFrontRight.rotation.x = $WheelFrontRight.rotation.x
 	
+	$HUDBasic.current_speed = linear_velocity.length()
 	pass
 
 func get_input(delta):
