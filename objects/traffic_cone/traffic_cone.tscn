@@ -1,0 +1,22 @@
+[gd_scene format=2]
+
+[node name="TrafficCone" type="RigidBody"]
+
+[node name="Model" type="Spatial" parent="."]
+
+[node name="Base" type="CSGCylinder" parent="Model"]
+radius = 0.25
+height = 0.03
+
+[node name="Cone" type="CSGCylinder" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.315, 0 )
+radius = 0.2
+height = 0.6
+cone = true
+
+[node name="Tip" type="CSGSphere" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+radius = 0.025
+radial_segments = 4
+rings = 2
+smooth_faces = false
