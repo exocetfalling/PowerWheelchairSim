@@ -8,6 +8,7 @@ radius = 0.25
 points = PoolVector3Array( 0, 0, -0.2, 0.2, 0, 0, 0, 0, 0.2, -0.2, 0, 0, 0, 0.6, 0 )
 
 [node name="TrafficCone" type="RigidBody"]
+continuous_cd = true
 
 [node name="Model" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
