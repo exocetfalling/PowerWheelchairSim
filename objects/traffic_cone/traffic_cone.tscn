@@ -1,12 +1,20 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CylinderShape" id=1]
+height = 0.02
+radius = 0.25
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( 0, 0, -0.2, 0.2, 0, 0, 0, 0, 0.2, -0.2, 0, 0, 0, 0.6, 0 )
 
 [node name="TrafficCone" type="RigidBody"]
 
 [node name="Model" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
 
 [node name="Base" type="CSGCylinder" parent="Model"]
 radius = 0.25
-height = 0.03
+height = 0.02
 
 [node name="Cone" type="CSGCylinder" parent="Model"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.315, 0 )
@@ -20,3 +28,11 @@ radius = 0.025
 radial_segments = 4
 rings = 2
 smooth_faces = false
+
+[node name="CollisionShape01" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape02" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+shape = SubResource( 2 )
