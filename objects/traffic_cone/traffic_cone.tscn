@@ -1,13 +1,16 @@
 [gd_scene load_steps=3 format=2]
 
 [sub_resource type="CylinderShape" id=1]
+margin = 0.001
 height = 0.02
 radius = 0.25
 
 [sub_resource type="ConvexPolygonShape" id=2]
+margin = 0.001
 points = PoolVector3Array( 0, 0, -0.2, 0.2, 0, 0, 0, 0, 0.2, -0.2, 0, 0, 0, 0.6, 0 )
 
 [node name="TrafficCone" type="RigidBody"]
+mass = 0.5
 continuous_cd = true
 
 [node name="Model" type="Spatial" parent="."]
