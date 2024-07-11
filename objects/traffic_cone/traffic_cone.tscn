@@ -19,11 +19,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
 [node name="Base" type="CSGCylinder" parent="Model"]
 radius = 0.25
 height = 0.02
+sides = 32
 
 [node name="Cone" type="CSGCylinder" parent="Model"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.315, 0 )
 radius = 0.2
 height = 0.6
+sides = 32
 cone = true
 
 [node name="Tip" type="CSGSphere" parent="Model"]
