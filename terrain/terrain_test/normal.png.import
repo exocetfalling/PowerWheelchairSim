@@ -2,28 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba0pyt5cbaemc"
-path.s3tc="res://.godot/imported/normal.png-cffcfba96c7583c47eac8cfce60eb95f.s3tc.ctex"
+uid="uid://buw553i855261"
+path="res://.godot/imported/normal.png-621f4d941cce742dcc37ffa4195efc96.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/basic_terrain/normal.png"
-dest_files=["res://.godot/imported/normal.png-cffcfba96c7583c47eac8cfce60eb95f.s3tc.ctex"]
+source_file="res://terrain/terrain_test/normal.png"
+dest_files=["res://.godot/imported/normal.png-621f4d941cce742dcc37ffa4195efc96.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_compression=1
+compress/hdr_compression=0
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
-mipmaps/limit=-1
+mipmaps/generate=false
+mipmaps/limit=0
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=false

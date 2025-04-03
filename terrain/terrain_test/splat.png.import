@@ -2,28 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf1q1takko277"
-path.s3tc="res://.godot/imported/color.png-a53daca987b3207a8e50046b93bd598d.s3tc.ctex"
+uid="uid://b3oknru4p2qq6"
+path="res://.godot/imported/splat.png-a7d1b7994a5c3b2a070fdbef22e49b7e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrain/basic_terrain/color.png"
-dest_files=["res://.godot/imported/color.png-a53daca987b3207a8e50046b93bd598d.s3tc.ctex"]
+source_file="res://terrain/terrain_test/splat.png"
+dest_files=["res://.godot/imported/splat.png-a7d1b7994a5c3b2a070fdbef22e49b7e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_compression=1
+compress/hdr_compression=0
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
-mipmaps/limit=-1
+mipmaps/generate=false
+mipmaps/limit=0
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=false

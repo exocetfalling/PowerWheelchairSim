@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" path="res://vehicles/wheelchair/model/wheelchair_model.tscn" id="1"]
 [ext_resource type="Script" path="res://vehicles/wheelchair/Wheelchair.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/pid_calc.gd" id="3"]
-[ext_resource type="PackedScene" path="res://uires/hud_basic/hud_basic.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dra5rbwi638wh" path="res://uires/hud_basic/hud_basic.tscn" id="4"]
 [ext_resource type="Script" path="res://uires/hud_basic/hud_basic.gd" id="5"]
 
 [sub_resource type="BoxShape3D" id="2"]
@@ -109,5 +109,4 @@ visible = false
 radius = 0.1
 
 [node name="HUDBasic" parent="." instance=ExtResource("4")]
-layout_mode = 3
 script = ExtResource("5")

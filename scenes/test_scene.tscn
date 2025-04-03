@@ -1,11 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://o67y67hjrfxm"]
 
-[ext_resource type="PackedScene" uid="uid://h0qbpsniqle8" path="res://terrain/basic_terrain/basic_terrain.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://wvjpoqugv1lw" path="res://vehicles/wheelchair/Wheelchair.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://assets/modern_house/modern_house.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://objects/traffic_cone/traffic_cone.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://nqnoncdfygcf" path="res://terrain/terrain_test/terrain_test.tscn" id="4_70e6s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x84t8"]
+sky_top_color = Color(9.62615e-08, 0.491821, 0.648355, 1)
 
 [sub_resource type="Sky" id="Sky_rih0r"]
 sky_material = SubResource("ProceduralSkyMaterial_x84t8")
@@ -30,10 +31,8 @@ environment = SubResource("Environment_3o5kj")
 camera_attributes = SubResource("CameraAttributesPractical_40cm2")
 compositor = SubResource("Compositor_o28ja")
 
-[node name="BasicTerrain" parent="." instance=ExtResource("1")]
-
 [node name="Wheelchair" parent="." instance=ExtResource("2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 12.386)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 20.8348)
 
 [node name="StaticBody1" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -5)
@@ -73,3 +72,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 
 [node name="TrafficCone" parent="." instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.105, 13)
+
+[node name="TerrainTest" parent="." instance=ExtResource("4_70e6s")]
