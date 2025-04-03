@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" type="PackedScene" id=1]
-[ext_resource path="res://resources/fonts/hud_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/fonts/hud_font.tres" type="FontFile" id=2]
 
 [node name="HUDBasic" type="Control"]
 anchor_left = 0.02
@@ -17,8 +17,8 @@ visible = false
 [node name="Virtual joystick2" parent="UI" instance=ExtResource( 1 )]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -250.0
-margin_right = -50.0
+offset_left = -250.0
+offset_right = -50.0
 action_left = "joystick_left"
 action_right = "joystick_right"
 action_up = "joystick_up"
@@ -30,14 +30,14 @@ anchor_right = 0.2
 anchor_bottom = 1.0
 
 [node name="Speed" type="Label" parent="Display"]
-margin_right = 429.0
-margin_bottom = 73.0
-custom_fonts/font = ExtResource( 2 )
+offset_right = 429.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource( 2 )
 text = "SPEED: XX.X"
 
 [node name="Range" type="Label" parent="Display"]
-margin_top = 77.0
-margin_right = 429.0
-margin_bottom = 150.0
-custom_fonts/font = ExtResource( 2 )
+offset_top = 77.0
+offset_right = 429.0
+offset_bottom = 150.0
+theme_override_fonts/font = ExtResource( 2 )
 text = "RANGE: XX.X"

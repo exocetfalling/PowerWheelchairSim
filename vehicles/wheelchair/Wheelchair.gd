@@ -1,4 +1,4 @@
-extends VehicleBody
+extends VehicleBody3D
 
 
 # Declare member variables here. Examples:
@@ -20,7 +20,7 @@ var wheel_speed_rear_right = 0.00
 
 var turn_radius: float = 0.00
 var wheel_velocity_ratio: float = 0.00
-export var wheelbase_width: float = 0.49
+@export var wheelbase_width: float = 0.49
 
 var wheel_speed_rear_left_tgt: float = 0.00
 var wheel_speed_rear_right_tgt: float = 0.00
@@ -51,15 +51,15 @@ func interpolate_linear(value_current, value_target, rate, delta_time):
 func _physics_process(delta):
 	get_input(delta)
 	
-	linear_velocity_local = self.transform.basis.xform_inv(linear_velocity)
+	linear_velocity_local = (linear_velocity) * self.transform.basis
 	angular_velocity_local = global_transform.basis.z * (angular_velocity)
 	
 #	steering_angle = atan2((linear_velocity_local.x - angular_velocity.y * 0.22), -linear_velocity_local.z)
 #	steering_angle = atan2(angular_velocity.y * 0.22, -linear_velocity_local.z)
 
 	# Simulate castering front wheels
-	steering_angle_target_l = atan2(0.391, (turn_radius + $WheelFrontLeft.translation.x))
-	steering_angle_target_r = atan2(0.391, (turn_radius + $WheelFrontRight.translation.x))
+	steering_angle_target_l = atan2(0.391, (turn_radius + $WheelFrontLeft.position.x))
+	steering_angle_target_r = atan2(0.391, (turn_radius + $WheelFrontRight.position.x))
 	
 	wheel_speed_rear_left_tgt = \
 		-(+3 * input_joystick.x + 2 * input_joystick.y) / 0.3
@@ -90,13 +90,13 @@ func _physics_process(delta):
 	
 	turn_radius = -wheel_velocity_ratio * 0.4
 	
-	$WheelFrontLeft.steering = rad2deg(lerp_angle( \
-		deg2rad($WheelFrontLeft.steering), \
+	$WheelFrontLeft.steering = rad_to_deg(lerp_angle( \
+		deg_to_rad($WheelFrontLeft.steering), \
 		steering_angle_target_l, \
 		steering_lerp_factor
 		))
-	$WheelFrontRight.steering = rad2deg(lerp_angle( \
-		deg2rad( $WheelFrontRight.steering), \
+	$WheelFrontRight.steering = rad_to_deg(lerp_angle( \
+		deg_to_rad( $WheelFrontRight.steering), \
 		steering_angle_target_r, \
 		steering_lerp_factor
 		))
@@ -118,8 +118,8 @@ func _process(delta):
 	$Model/WheelRearRight.rotation.x = -$WheelRearRight.rotation.x
 	$Model/WheelRearRight.rotation.y = $WheelRearRight.rotation.y + PI
 	
-	$Model/CastorLeft.rotation.y = deg2rad($WheelFrontLeft.steering)
-	$Model/CastorRight.rotation.y = deg2rad($WheelFrontRight.steering)
+	$Model/CastorLeft.rotation.y = deg_to_rad($WheelFrontLeft.steering)
+	$Model/CastorRight.rotation.y = deg_to_rad($WheelFrontRight.steering)
 	
 	$Model/CastorLeft/WheelFrontLeft.rotation.x = $WheelFrontLeft.rotation.x
 	$Model/CastorRight/WheelFrontRight.rotation.x = $WheelFrontRight.rotation.x
