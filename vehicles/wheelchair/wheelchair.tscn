@@ -265,3 +265,11 @@ radius = 0.1
 
 [node name="HUDBasic" parent="." instance=ExtResource("4")]
 script = ExtResource("5")
+
+[node name="RayCastLeft" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215, 0, 0.21)
+target_position = Vector3(0, 0, 2)
+
+[node name="RayCastRight" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215, 0, 0.21)
+target_position = Vector3(0, 0, 2)
