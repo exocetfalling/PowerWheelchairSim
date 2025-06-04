@@ -5,6 +5,9 @@ extends VehicleBody3D
 # var a = 2
 # var b = "text"
 
+@export var WHEELBASE_WIDTH: float = 1
+@export var WHEEL_RADIUS_REAR: float = 1
+
 var input_joystick : Vector2 = Vector2.ZERO
 
 var linear_velocity_local : Vector3 = Vector3.ZERO
@@ -20,10 +23,14 @@ var wheel_speed_rear_right = 0.00
 
 var turn_radius: float = 0.00
 var wheel_velocity_ratio: float = 0.00
-@export var wheelbase_width: float = 0.49
 
 var wheel_speed_rear_left_tgt: float = 0.00
 var wheel_speed_rear_right_tgt: float = 0.00
+
+@export_range(0.1, 2, 0.1) var speed_limit: float = 1.5
+
+@export_range(0.1, 2, 0.1) var turn_rate_scalar: float = 1
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,10 +69,10 @@ func _physics_process(delta):
 	steering_angle_target_r = atan2(0.391, (turn_radius + $WheelFrontRight.position.x))
 	
 	wheel_speed_rear_left_tgt = \
-		-(+3 * input_joystick.x + 2 * input_joystick.y) / 0.3
+		-(+input_joystick.x * turn_rate_scalar + input_joystick.y) * speed_limit / WHEEL_RADIUS_REAR
 	
 	wheel_speed_rear_right_tgt = \
-		-(-3 * input_joystick.x + 2 * input_joystick.y) / 0.3
+		-(-input_joystick.x * turn_rate_scalar + input_joystick.y) * speed_limit / WHEEL_RADIUS_REAR
 	
 	$WheelRearLeft.engine_force = \
 		$PIDCalcWheelLeft.calc_PID_output(wheel_speed_rear_left_tgt, wheel_speed_rear_left)
@@ -88,7 +95,7 @@ func _physics_process(delta):
 	else:
 		wheel_velocity_ratio = INF
 	
-	turn_radius = -wheel_velocity_ratio * 0.4
+	turn_radius = -wheel_velocity_ratio * WHEEL_RADIUS_REAR
 	
 	$WheelFrontLeft.steering = rad_to_deg(lerp_angle( \
 		deg_to_rad($WheelFrontLeft.steering), \
@@ -111,6 +118,8 @@ func _process(delta):
 	# Animations 
 	$Model/WheelRearLeft.rotation = $WheelRearLeft.rotation
 	$Model/WheelRearRight.rotation = $WheelRearRight.rotation
+	$Model/WheelRearLeft.position = $WheelRearLeft.position
+	$Model/WheelRearRight.position = $WheelRearRight.position
 	
 	# Fix inverted rims
 	$Model/WheelRearLeft.rotation.x = -$WheelRearLeft.rotation.x

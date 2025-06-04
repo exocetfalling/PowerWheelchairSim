@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://wvjpoqugv1lw"]
+[gd_scene load_steps=10 format=3 uid="uid://b8ls2c18p1frg"]
 
-[ext_resource type="PackedScene" uid="uid://bnbwqlocjnuxa" path="res://vehicles/wheelchair/model/wheelchair_model.tscn" id="1"]
-[ext_resource type="Script" uid="uid://bnqlkndgirgnq" path="res://vehicles/wheelchair/Wheelchair.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://bbh72u2em64ms" path="res://vehicles/wheelchair/model/wheelchair_model.tscn" id="1"]
+[ext_resource type="Script" uid="uid://cce6jxjwy64wh" path="res://vehicles/wheelchair/wheelchair.gd" id="2"]
 [ext_resource type="Script" uid="uid://cymqh3vwjwfxb" path="res://scripts/pid_calc.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://dra5rbwi638wh" path="res://uires/hud_basic/hud_basic.tscn" id="4"]
 [ext_resource type="Script" uid="uid://2htfpjqhnla4" path="res://uires/hud_basic/hud_basic.gd" id="5"]
@@ -10,7 +10,7 @@
 size = Vector3(0.414, 0.04, 0.5)
 
 [sub_resource type="BoxShape3D" id="4"]
-size = Vector3(0.414, 0.04, 0.2)
+size = Vector3(0.414, 0.04, 0.35)
 
 [sub_resource type="BoxShape3D" id="3"]
 size = Vector3(0.333988, 0.04, 0.090221)
@@ -19,8 +19,12 @@ size = Vector3(0.333988, 0.04, 0.090221)
 size = Vector3(0.413528, 0.536672, 0.0285416)
 
 [node name="Wheelchair" type="VehicleBody3D"]
+mass = 100.0
 continuous_cd = true
 script = ExtResource("2")
+WHEELBASE_WIDTH = 0.49
+WHEEL_RADIUS_REAR = 0.4
+turn_rate_scalar = 0.5
 
 [node name="CollisionShapeSeat" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0738329, 0)
@@ -43,26 +47,28 @@ shape = SubResource("1")
 [node name="WheelRearLeft" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, -0.21, 0.173)
 use_as_traction = true
+wheel_roll_influence = 0.5
 wheel_radius = 0.29
 wheel_rest_length = 0.03
 wheel_friction_slip = 0.8
 suspension_travel = 0.05
 suspension_stiffness = 100.0
-suspension_max_force = 10000.0
-damping_compression = 0.95
-damping_relaxation = 0.98
+suspension_max_force = 400.0
+damping_compression = 1.0
+damping_relaxation = 1.0
 
 [node name="WheelRearRight" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245, -0.21, 0.173)
 use_as_traction = true
+wheel_roll_influence = 0.5
 wheel_radius = 0.29
 wheel_rest_length = 0.03
 wheel_friction_slip = 0.8
 suspension_travel = 0.05
 suspension_stiffness = 100.0
-suspension_max_force = 10000.0
-damping_compression = 0.95
-damping_relaxation = 0.98
+suspension_max_force = 400.0
+damping_compression = 1.0
+damping_relaxation = 1.0
 
 [node name="WheelFrontLeft" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, -0.412604, -0.218373)
@@ -72,9 +78,9 @@ wheel_rest_length = 0.002
 wheel_friction_slip = 0.01
 suspension_travel = 0.03
 suspension_stiffness = 200.0
-suspension_max_force = 1000.0
-damping_compression = 0.95
-damping_relaxation = 0.98
+suspension_max_force = 400.0
+damping_compression = 1.0
+damping_relaxation = 1.0
 
 [node name="WheelFrontRight" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245, -0.413, -0.218)
@@ -84,24 +90,24 @@ wheel_rest_length = 0.002
 wheel_friction_slip = 0.01
 suspension_travel = 0.03
 suspension_stiffness = 200.0
-suspension_max_force = 1000.0
-damping_compression = 0.95
-damping_relaxation = 0.98
+suspension_max_force = 400.0
+damping_compression = 1.0
+damping_relaxation = 1.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0.6, 1)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0.5, 0)
 far = 10000.0
 
 [node name="PIDCalcWheelLeft" type="Node" parent="."]
 script = ExtResource("3")
-term_P = 10.0
-term_D = 1.0
+term_P = 50.0
+term_I = 100.0
 param_tuning_active = false
 
 [node name="PIDCalcWheelRight" type="Node" parent="."]
 script = ExtResource("3")
-term_P = 10.0
-term_D = 1.0
+term_P = 50.0
+term_I = 100.0
 param_tuning_active = false
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]

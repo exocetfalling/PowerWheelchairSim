@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnbwqlocjnuxa"]
+[gd_scene load_steps=2 format=3 uid="uid://bbh72u2em64ms"]
 
 [ext_resource type="PackedScene" uid="uid://coe3dlqn67jd2" path="res://vehicles/wheelchair/model/wheelchair.glb" id="1"]
 
