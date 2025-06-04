@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dra5rbwi638wh"]
+[gd_scene load_steps=4 format=3 uid="uid://dra5rbwi638wh"]
 
 [ext_resource type="PackedScene" uid="uid://bxqrouy7bbdl" path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" id="1"]
-[ext_resource type="FontFile" path="res://resources/fonts/hud_font.tres" id="2"]
+[ext_resource type="FontFile" uid="uid://c1pytsr5euhu0" path="res://assets/fonts/B612Mono-Regular.ttf" id="1_7l063"]
+
+[sub_resource type="Theme" id="Theme_iajoa"]
+default_font = ExtResource("1_7l063")
+default_font_size = 30
 
 [node name="HUDBasic" type="Control"]
 layout_mode = 3
@@ -9,6 +13,7 @@ anchor_left = 0.02
 anchor_top = 0.02
 anchor_right = 0.98
 anchor_bottom = 0.98
+theme = SubResource("Theme_iajoa")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -16,6 +21,11 @@ anchor_bottom = 0.98
 visible = false
 layout_mode = 3
 anchors_preset = 2
+offset_left = 0.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 0.0
+grow_vertical = 0
 
 [node name="Virtual joystick2" parent="UI" instance=ExtResource("1")]
 layout_mode = 3
@@ -23,7 +33,11 @@ anchors_preset = 3
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -250.0
+offset_top = -200.0
 offset_right = -50.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
 action_left = "joystick_left"
 action_right = "joystick_right"
 action_up = "joystick_up"
@@ -37,10 +51,8 @@ anchor_bottom = 1.0
 
 [node name="Speed" type="Label" parent="Display"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2")
 text = "SPEED: XX.X"
 
 [node name="Range" type="Label" parent="Display"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2")
 text = "RANGE: XX.X"
