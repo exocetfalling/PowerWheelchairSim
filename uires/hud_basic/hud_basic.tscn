@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dra5rbwi638wh"]
 
-[ext_resource type="PackedScene" path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bxqrouy7bbdl" path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" id="1"]
 [ext_resource type="FontFile" path="res://resources/fonts/hud_font.tres" id="2"]
 
 [node name="HUDBasic" type="Control"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://o67y67hjrfxm"]
 
 [ext_resource type="PackedScene" uid="uid://wvjpoqugv1lw" path="res://vehicles/wheelchair/Wheelchair.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://assets/modern_house/modern_house.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://objects/traffic_cone/traffic_cone.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://c7vk3dblv23sr" path="res://assets/modern_house/modern_house.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://db33kxe003a6r" path="res://objects/traffic_cone/traffic_cone.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://nqnoncdfygcf" path="res://terrain/terrain_test/terrain_test.tscn" id="4_70e6s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x84t8"]

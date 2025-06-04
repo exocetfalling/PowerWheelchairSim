@@ -1,20 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://db33kxe003a6r"]
 
-[sub_resource type="CylinderShape3D" id=1]
+[sub_resource type="CylinderShape3D" id="1"]
 margin = 0.001
 height = 0.02
 radius = 0.25
 
-[sub_resource type="ConvexPolygonShape3D" id=2]
+[sub_resource type="ConvexPolygonShape3D" id="2"]
 margin = 0.001
-points = PackedVector3Array( 0, 0, -0.2, 0.2, 0, 0, 0, 0, 0.2, -0.2, 0, 0, 0, 0.6, 0 )
+points = PackedVector3Array(0, 0, -0.2, 0.2, 0, 0, 0, 0, 0.2, -0.2, 0, 0, 0, 0.6, 0)
 
 [node name="TrafficCone" type="RigidBody3D"]
 mass = 0.5
 continuous_cd = true
 
 [node name="Model" type="Node3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
 [node name="Base" type="CSGCylinder3D" parent="Model"]
 radius = 0.25
@@ -22,23 +22,23 @@ height = 0.02
 sides = 32
 
 [node name="Cone" type="CSGCylinder3D" parent="Model"]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.315, 0 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.315, 0)
 radius = 0.2
 height = 0.6
 sides = 32
 cone = true
 
 [node name="Tip" type="CSGSphere3D" parent="Model"]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 radius = 0.025
 radial_segments = 4
 rings = 2
 smooth_faces = false
 
 [node name="CollisionShape01" type="CollisionShape3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
-shape = SubResource( 1 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("1")
 
 [node name="CollisionShape02" type="CollisionShape3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
-shape = SubResource( 2 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("2")
