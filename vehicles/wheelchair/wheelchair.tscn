@@ -44,12 +44,20 @@ var prox_sensor_02_valid: bool = false
 var prox_sensor_03_valid: bool = false
 var prox_sensor_04_valid: bool = false
 var prox_sensor_05_valid: bool = false
+var prox_sensor_06_valid: bool = false
+var prox_sensor_07_valid: bool = false
+var prox_sensor_08_valid: bool = false
+var prox_sensor_09_valid: bool = false
 
 var prox_sensor_01_value: float = 0
 var prox_sensor_02_value: float = 0
 var prox_sensor_03_value: float = 0
 var prox_sensor_04_value: float = 0
 var prox_sensor_05_value: float = 0
+var prox_sensor_06_value: float = 0
+var prox_sensor_07_value: float = 0
+var prox_sensor_08_value: float = 0
+var prox_sensor_09_value: float = 0
 
 
 
@@ -129,10 +137,99 @@ func _physics_process(delta):
 		steering_lerp_factor
 		))
 	
+	# Sensors
+	if $ProxSensor01.is_colliding():
+		prox_sensor_01_valid = true
+		prox_sensor_01_value = \\
+			($ProxSensor01.get_collision_point() - $ProxSensor01.global_position).length()
+	else:
+		prox_sensor_01_valid = false
+		prox_sensor_01_value = \\
+			$ProxSensor01.target_position.length()
 	
-#	$CSGSphere.translation.x = turn_radius
+	if $ProxSensor02.is_colliding():
+		prox_sensor_02_valid = true
+		prox_sensor_02_value = \\
+			($ProxSensor02.get_collision_point() - $ProxSensor02.global_position).length()
+	else:
+		prox_sensor_02_valid = false
+		prox_sensor_02_value = \\
+			$ProxSensor02.target_position.length()
 	
-	pass
+	if $ProxSensor03.is_colliding():
+		prox_sensor_03_valid = true
+		prox_sensor_03_value = \\
+			($ProxSensor03.get_collision_point() - $ProxSensor03.global_position).length()
+	else:
+		prox_sensor_03_valid = false
+		prox_sensor_03_value = \\
+			$ProxSensor03.target_position.length()
+	
+	if $ProxSensor04.is_colliding():
+		prox_sensor_04_valid = true
+		prox_sensor_04_value = \\
+			($ProxSensor04.get_collision_point() - $ProxSensor04.global_position).length()
+	else:
+		prox_sensor_04_valid = false
+		prox_sensor_04_value = \\
+			$ProxSensor04.target_position.length()
+	
+	if $ProxSensor05.is_colliding():
+		prox_sensor_05_valid = true
+		prox_sensor_05_value = \\
+			($ProxSensor05.get_collision_point() - $ProxSensor05.global_position).length()
+	else:
+		prox_sensor_05_valid = false
+		prox_sensor_05_value = \\
+			$ProxSensor05.target_position.length()
+	
+	if $ProxSensor06.is_colliding():
+		prox_sensor_06_valid = true
+		prox_sensor_06_value = \\
+			($ProxSensor06.get_collision_point() - $ProxSensor06.global_position).length()
+	else:
+		prox_sensor_06_valid = false
+		prox_sensor_06_value = \\
+			$ProxSensor06.target_position.length()
+	
+	if $ProxSensor07.is_colliding():
+		prox_sensor_07_valid = true
+		prox_sensor_07_value = \\
+			($ProxSensor07.get_collision_point() - $ProxSensor07.global_position).length()
+	else:
+		prox_sensor_07_valid = false
+		prox_sensor_07_value = \\
+			$ProxSensor07.target_position.length()
+	
+	if $ProxSensor08.is_colliding():
+		prox_sensor_08_valid = true
+		prox_sensor_08_value = \\
+			($ProxSensor08.get_collision_point() - $ProxSensor08.global_position).length()
+	else:
+		prox_sensor_08_valid = false
+		prox_sensor_08_value = \\
+			$ProxSensor08.target_position.length()
+	
+	if $ProxSensor09.is_colliding():
+		prox_sensor_09_valid = true
+		prox_sensor_09_value = \\
+			($ProxSensor09.get_collision_point() - $ProxSensor09.global_position).length()
+	else:
+		prox_sensor_09_valid = false
+		prox_sensor_09_value = \\
+			$ProxSensor09.target_position.length()
+	
+	
+	$HUDBasic/Sensors/ProxSensor01.value = prox_sensor_01_value
+	$HUDBasic/Sensors/ProxSensor02.value = prox_sensor_02_value
+	$HUDBasic/Sensors/ProxSensor03.value = prox_sensor_03_value
+	$HUDBasic/Sensors/ProxSensor04.value = prox_sensor_04_value
+	$HUDBasic/Sensors/ProxSensor05.value = prox_sensor_05_value
+	$HUDBasic/Sensors/ProxSensor06.value = prox_sensor_06_value
+	$HUDBasic/Sensors/ProxSensor07.value = prox_sensor_07_value
+	$HUDBasic/Sensors/ProxSensor08.value = prox_sensor_08_value
+	$HUDBasic/Sensors/ProxSensor09.value = prox_sensor_09_value
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -279,17 +376,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.21)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor02" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0.21)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor03" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0.21)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor04" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0.21)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor05" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21)
+target_position = Vector3(0, 0, 2)
+
+[node name="ProxSensor06" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0.21)
+target_position = Vector3(0, 0, 2)
+
+[node name="ProxSensor07" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0.21)
+target_position = Vector3(0, 0, 2)
+
+[node name="ProxSensor08" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0.21)
+target_position = Vector3(0, 0, 2)
+
+[node name="ProxSensor09" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0.21)
 target_position = Vector3(0, 0, 2)

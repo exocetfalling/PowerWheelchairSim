@@ -69,9 +69,9 @@ text = "RANGE: XX.X"
 [node name="Sensors" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.45
+anchor_left = 0.48
 anchor_top = 0.8
-anchor_right = 0.55
+anchor_right = 0.52
 anchor_bottom = 1.0
 offset_left = -20.0
 offset_top = -41.0
@@ -84,33 +84,79 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-fill_mode = 3
+max_value = 2.0
+step = 0.001
+fill_mode = 2
 show_percentage = false
 
 [node name="ProxSensor02" type="ProgressBar" parent="Sensors"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-fill_mode = 3
+max_value = 2.0
+step = 0.001
+fill_mode = 2
 show_percentage = false
 
 [node name="ProxSensor03" type="ProgressBar" parent="Sensors"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-fill_mode = 3
+max_value = 2.0
+step = 0.001
+fill_mode = 2
 show_percentage = false
 
 [node name="ProxSensor04" type="ProgressBar" parent="Sensors"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-fill_mode = 3
+max_value = 2.0
+step = 0.001
+fill_mode = 2
 show_percentage = false
 
 [node name="ProxSensor05" type="ProgressBar" parent="Sensors"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-fill_mode = 3
+max_value = 2.0
+step = 0.001
+fill_mode = 2
+show_percentage = false
+
+[node name="ProxSensor06" type="ProgressBar" parent="Sensors"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 2.0
+step = 0.001
+fill_mode = 2
+show_percentage = false
+
+[node name="ProxSensor07" type="ProgressBar" parent="Sensors"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 2.0
+step = 0.001
+fill_mode = 2
+show_percentage = false
+
+[node name="ProxSensor08" type="ProgressBar" parent="Sensors"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 2.0
+step = 0.001
+fill_mode = 2
+show_percentage = false
+
+[node name="ProxSensor09" type="ProgressBar" parent="Sensors"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 2.0
+step = 0.001
+fill_mode = 2
 show_percentage = false
