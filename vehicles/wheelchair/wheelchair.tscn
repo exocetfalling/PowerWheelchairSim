@@ -175,7 +175,7 @@ size = Vector3(0.333988, 0.04, 0.090221)
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(0.413528, 0.536672, 0.0285416)
 
-[node name="Wheelchair2" type="VehicleBody3D"]
+[node name="Wheelchair" type="VehicleBody3D"]
 mass = 100.0
 continuous_cd = true
 script = SubResource("GDScript_j6umd")

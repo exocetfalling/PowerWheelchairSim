@@ -65,3 +65,52 @@ text = "SPEED: XX.X"
 [node name="Range" type="Label" parent="Display"]
 layout_mode = 2
 text = "RANGE: XX.X"
+
+[node name="Sensors" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.8
+anchor_right = 0.55
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -41.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="ProxSensor01" type="ProgressBar" parent="Sensors"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+fill_mode = 3
+show_percentage = false
+
+[node name="ProxSensor02" type="ProgressBar" parent="Sensors"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+fill_mode = 3
+show_percentage = false
+
+[node name="ProxSensor03" type="ProgressBar" parent="Sensors"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+fill_mode = 3
+show_percentage = false
+
+[node name="ProxSensor04" type="ProgressBar" parent="Sensors"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+fill_mode = 3
+show_percentage = false
+
+[node name="ProxSensor05" type="ProgressBar" parent="Sensors"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+fill_mode = 3
+show_percentage = false
