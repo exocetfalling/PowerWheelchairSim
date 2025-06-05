@@ -17,24 +17,28 @@ theme = SubResource("Theme_iajoa")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Virtual joystick" parent="UI" instance=ExtResource("1")]
-visible = false
+[node name="VirtualJoystick01" parent="UI" instance=ExtResource("1")]
 layout_mode = 3
-anchors_preset = 2
+anchor_left = 0.1
+anchor_top = 0.9
+anchor_right = 0.1
+anchor_bottom = 0.9
 offset_left = 0.0
 offset_top = -200.0
 offset_right = 200.0
 offset_bottom = 0.0
 grow_vertical = 0
+size_flags_horizontal = 4
 
-[node name="Virtual joystick2" parent="UI" instance=ExtResource("1")]
+[node name="VirtualJoystick02" parent="UI" instance=ExtResource("1")]
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -250.0
+anchor_left = 0.9
+anchor_top = 0.9
+anchor_right = 0.9
+anchor_bottom = 0.9
+offset_left = -200.0
 offset_top = -200.0
-offset_right = -50.0
+offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -44,10 +48,15 @@ action_up = "joystick_up"
 action_down = "joystick_down"
 
 [node name="Display" type="VBoxContainer" parent="."]
-layout_mode = 0
-anchor_top = 0.7
-anchor_right = 0.2
-anchor_bottom = 1.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -107.5
+offset_right = 107.5
+offset_bottom = 78.0
+grow_horizontal = 2
+alignment = 1
 
 [node name="Speed" type="Label" parent="Display"]
 layout_mode = 2

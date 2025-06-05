@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckc6af37ya7qd"]
+[gd_scene load_steps=10 format=3 uid="uid://c0v0s0n3sp000"]
 
 [ext_resource type="PackedScene" uid="uid://bbh72u2em64ms" path="res://vehicles/wheelchair/model/wheelchair_model.tscn" id="1"]
 [ext_resource type="Script" uid="uid://cymqh3vwjwfxb" path="res://scripts/pid_calc.gd" id="3"]
@@ -39,10 +39,18 @@ var wheel_speed_rear_right_tgt: float = 0.00
 
 @export_range(0.1, 2, 0.1) var turn_rate_scalar: float = 1
 
-var raycast_left_valid: bool = false
-var raycast_right_valid: bool = false
-var raycast_left_range: float = 0
-var raycast_right_range: float = 0
+var prox_sensor_01_valid: bool = false
+var prox_sensor_02_valid: bool = false
+var prox_sensor_03_valid: bool = false
+var prox_sensor_04_valid: bool = false
+var prox_sensor_05_valid: bool = false
+
+var prox_sensor_01_value: float = 0
+var prox_sensor_02_value: float = 0
+var prox_sensor_03_value: float = 0
+var prox_sensor_04_value: float = 0
+var prox_sensor_05_value: float = 0
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -266,10 +274,22 @@ radius = 0.1
 [node name="HUDBasic" parent="." instance=ExtResource("4")]
 script = ExtResource("5")
 
-[node name="RayCastLeft" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215, 0, 0.21)
+[node name="ProxSensor01" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.21)
 target_position = Vector3(0, 0, 2)
 
-[node name="RayCastRight" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215, 0, 0.21)
+[node name="ProxSensor02" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0.21)
+target_position = Vector3(0, 0, 2)
+
+[node name="ProxSensor03" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21)
+target_position = Vector3(0, 0, 2)
+
+[node name="ProxSensor04" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0.21)
+target_position = Vector3(0, 0, 2)
+
+[node name="ProxSensor05" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0.21)
 target_position = Vector3(0, 0, 2)
