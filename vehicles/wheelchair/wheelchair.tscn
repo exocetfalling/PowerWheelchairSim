@@ -372,37 +372,37 @@ radius = 0.1
 script = ExtResource("5")
 
 [node name="ProxSensor01" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor02" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor03" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor04" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor05" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor06" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor07" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor08" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
 
 [node name="ProxSensor09" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0.21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
