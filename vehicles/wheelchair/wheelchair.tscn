@@ -60,7 +60,6 @@ var prox_sensor_08_value: float = 0
 var prox_sensor_09_value: float = 0
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#DebugOverlay.stats.add_property(self, \"input_joystick\", \"round\")
@@ -258,6 +257,14 @@ func get_input(delta):
 	# Joystick input as axes
 	input_joystick.x = Input.get_axis(\"joystick_left\", \"joystick_right\")
 	input_joystick.y = Input.get_axis(\"joystick_down\", \"joystick_up\")
+	
+	# Camera
+	$CameraFPV.rotation.x = \\
+		lerp($CameraFPV.rotation.x, Input.get_axis(\"cam_down\", \"cam_up\"), 0.1)
+	$CameraFPV.rotation.y = \\
+		lerp($CameraFPV.rotation.y, Input.get_axis(\"cam_left\", \"cam_right\") * -3, 0.1)
+	$CameraFPV.position.x = \\
+		lerp($CameraFPV.position.x, Input.get_axis(\"cam_left\", \"cam_right\") * 0.1, 0.1)
 "
 
 [sub_resource type="BoxShape3D" id="2"]
@@ -348,7 +355,7 @@ suspension_max_force = 400.0
 damping_compression = 1.0
 damping_relaxation = 1.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CameraFPV" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0.5, 0)
 far = 10000.0
 

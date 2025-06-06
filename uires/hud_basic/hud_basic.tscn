@@ -29,6 +29,10 @@ offset_right = 200.0
 offset_bottom = 0.0
 grow_vertical = 0
 size_flags_horizontal = 4
+action_left = "cam_left"
+action_right = "cam_right"
+action_up = "cam_up"
+action_down = "cam_down"
 
 [node name="VirtualJoystick02" parent="UI" instance=ExtResource("1")]
 layout_mode = 3
