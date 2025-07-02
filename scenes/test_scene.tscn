@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://o67y67hjrfxm"]
+[gd_scene load_steps=10 format=3 uid="uid://o67y67hjrfxm"]
 
 [ext_resource type="PackedScene" uid="uid://c0v0s0n3sp000" path="res://vehicles/wheelchair/wheelchair.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c7vk3dblv23sr" path="res://assets/modern_house/modern_house.tscn" id="3"]
@@ -19,11 +19,6 @@ sky = SubResource("Sky_rih0r")
 
 [sub_resource type="Compositor" id="Compositor_o28ja"]
 
-[sub_resource type="BoxShape3D" id="3"]
-
-[sub_resource type="BoxShape3D" id="4"]
-size = Vector3(4, 2, 8)
-
 [node name="TestScene" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -34,40 +29,27 @@ compositor = SubResource("Compositor_o28ja")
 [node name="Wheelchair" parent="." instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 20.8348)
 
-[node name="StaticBody1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -5)
-visible = false
+[node name="Plank01" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.95, 7.16018)
+use_collision = true
+size = Vector3(1.2, 0.1, 8)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody1"]
-shape = SubResource("3")
+[node name="Ramp01" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.990268, -0.139173, 0, 0.139173, 0.990268, 10, -0.051, 15)
+use_collision = true
+size = Vector3(1.2, 1, 8)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody1"]
-
-[node name="StaticBody2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -5)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody2"]
-shape = SubResource("3")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody2"]
-
-[node name="StaticBody3" type="StaticBody3D" parent="."]
-transform = Transform3D(0.871505, -0.060604, -0.486627, 0, 0.992334, -0.123584, 0.490387, 0.107704, 0.864824, 2.5, -0.511484, -20)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3"]
-shape = SubResource("4")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3"]
-size = Vector3(4, 1, 8)
+[node name="Ramp02" type="CSGBox3D" parent="."]
+transform = Transform3D(-1, -1.21669e-08, -8.6572e-08, 0, 0.990268, -0.139173, 8.74228e-08, -0.139173, -0.990268, 10, -0.051, -0.694582)
+use_collision = true
+size = Vector3(1.2, 1, 8)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 400, -800)
 shadow_enabled = true
 directional_shadow_max_distance = 1000.0
 
-[node name="modern_house" parent="." instance=ExtResource("3")]
+[node name="ModernHouse" parent="." instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 
 [node name="TrafficCone" parent="." instance=ExtResource("4")]
