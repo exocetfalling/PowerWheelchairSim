@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://o67y67hjrfxm"]
+[gd_scene load_steps=19 format=3 uid="uid://o67y67hjrfxm"]
 
 [ext_resource type="PackedScene" uid="uid://c0v0s0n3sp000" path="res://vehicles/wheelchair/wheelchair.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c7vk3dblv23sr" path="res://assets/modern_house/modern_house.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://db33kxe003a6r" path="res://objects/traffic_cone/traffic_cone.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://nqnoncdfygcf" path="res://terrain/terrain_test/terrain_test.tscn" id="4_70e6s"]
+[ext_resource type="PackedScene" uid="uid://nqnoncdfygcf" path="res://terrain/terrain_pbr/terrain_pbr.tscn" id="4_7ddre"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x84t8"]
 sky_top_color = Color(9.62615e-08, 0.491821, 0.648355, 1)
@@ -19,6 +19,33 @@ sky = SubResource("Sky_rih0r")
 
 [sub_resource type="Compositor" id="Compositor_o28ja"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7ddre"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qjeyg"]
+seamless = true
+noise = SubResource("FastNoiseLite_7ddre")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qnke"]
+albedo_texture = SubResource("NoiseTexture2D_qjeyg")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wtsjf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rnaij"]
+seamless = true
+noise = SubResource("FastNoiseLite_wtsjf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3xc6"]
+albedo_texture = SubResource("NoiseTexture2D_rnaij")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s36qc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6qxox"]
+seamless = true
+noise = SubResource("FastNoiseLite_s36qc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gthg3"]
+albedo_texture = SubResource("NoiseTexture2D_6qxox")
+
 [node name="TestScene" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -33,16 +60,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 20.8348)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.95, 7.16018)
 use_collision = true
 size = Vector3(1.2, 0.1, 8)
+material = SubResource("StandardMaterial3D_3qnke")
 
 [node name="Ramp01" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.990268, -0.139173, 0, 0.139173, 0.990268, 10, -0.051, 15)
 use_collision = true
 size = Vector3(1.2, 1, 8)
+material = SubResource("StandardMaterial3D_h3xc6")
 
 [node name="Ramp02" type="CSGBox3D" parent="."]
 transform = Transform3D(-1, -1.21669e-08, -8.6572e-08, 0, 0.990268, -0.139173, 8.74228e-08, -0.139173, -0.990268, 10, -0.051, -0.694582)
 use_collision = true
 size = Vector3(1.2, 1, 8)
+material = SubResource("StandardMaterial3D_gthg3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 400, -800)
@@ -55,4 +85,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 [node name="TrafficCone" parent="." instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.105, 13)
 
-[node name="TerrainTest" parent="." instance=ExtResource("4_70e6s")]
+[node name="TerrainPBR" parent="." instance=ExtResource("4_7ddre")]

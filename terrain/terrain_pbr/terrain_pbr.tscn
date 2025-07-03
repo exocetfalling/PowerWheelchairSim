@@ -1,0 +1,54 @@
+[gd_scene load_steps=13 format=3 uid="uid://nqnoncdfygcf"]
+
+[ext_resource type="Script" uid="uid://bh31ivjh5wxkj" path="res://addons/zylann.hterrain/hterrain.gd" id="1_056hm"]
+[ext_resource type="Resource" uid="uid://c3tn6alywd1hy" path="res://terrain/terrain_pbr/data.hterrain" id="2_apggt"]
+[ext_resource type="Script" uid="uid://mrvjvyxerogm" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="2_u5u1b"]
+[ext_resource type="Texture2D" uid="uid://c8pr312euhpfb" path="res://terrain/terrain_pbr/terrain_pbr_slot0_albedo_bump.png" id="4_j3fjq"]
+[ext_resource type="Script" uid="uid://cdb3yd4b00dop" path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" id="4_l4dip"]
+[ext_resource type="Texture2D" uid="uid://ky5hanl7l0pp" path="res://terrain/terrain_pbr/terrain_pbr_slot1_albedo_bump.png" id="5_a6oyr"]
+[ext_resource type="Texture2D" uid="uid://dyoopwf60wkcl" path="res://assets/grass_blades/grass_blades_albedo.png" id="5_d65dy"]
+[ext_resource type="Texture2D" uid="uid://dkg6t432jwyl" path="res://terrain/terrain_pbr/terrain_pbr_slot0_normal_roughness.png" id="6_4uldo"]
+[ext_resource type="ArrayMesh" uid="uid://b71y4ma4rrtop" path="res://addons/zylann.hterrain/models/grass_quad_x4.obj" id="6_ai2i4"]
+[ext_resource type="Texture2D" uid="uid://n8r6sgta0uen" path="res://terrain/terrain_pbr/terrain_pbr_slot1_normal_roughness.png" id="7_ae65f"]
+[ext_resource type="Texture2D" uid="uid://dr4nae3t23ye4" path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" id="7_cerja"]
+
+[sub_resource type="Resource" id="Resource_umtdh"]
+script = ExtResource("2_u5u1b")
+mode = 0
+textures = [[ExtResource("4_j3fjq"), ExtResource("5_a6oyr")], [ExtResource("6_4uldo"), ExtResource("7_ae65f")]]
+
+[node name="TerrainPBR" type="Node3D"]
+script = ExtResource("1_056hm")
+centered = true
+_terrain_data = ExtResource("2_apggt")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_umtdh")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale_per_texture = Vector4(5, 5, 5, 5)
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = Vector4(1, 1, 1, 1)
+shader_params/u_globalmap_blend_start = null
+shader_params/u_globalmap_blend_distance = null
+shader_params/u_colormap_opacity_per_texture = null
+
+[node name="HTerrainDetailLayer" type="Node3D" parent="."]
+script = ExtResource("4_l4dip")
+texture = ExtResource("5_d65dy")
+view_distance = 50.0
+density = 6.0
+instance_mesh = ExtResource("6_ai2i4")
+cast_shadow = 0
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = Vector3(0.5, 0.5, 0.5)
+shader_params/u_roughness = 1.0
+metadata/_editor_icon = ExtResource("7_cerja")

@@ -67,6 +67,7 @@ layout_mode = 2
 text = "SPEED: XX.X"
 
 [node name="Range" type="Label" parent="Display"]
+visible = false
 layout_mode = 2
 text = "RANGE: XX.X"
 
