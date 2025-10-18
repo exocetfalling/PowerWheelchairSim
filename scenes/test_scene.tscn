@@ -15,6 +15,8 @@ sky_material = SubResource("ProceduralSkyMaterial_x84t8")
 [sub_resource type="Environment" id="Environment_3o5kj"]
 background_mode = 2
 sky = SubResource("Sky_rih0r")
+tonemap_mode = 2
+tonemap_exposure = 2.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_40cm2"]
 
@@ -77,6 +79,7 @@ material = SubResource("StandardMaterial3D_gthg3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, -4.37114e-08, 7.57103e-08, 0, 0.866025, 0.5, -8.74228e-08, 0.5, -0.866025, 0, 400, -800)
+light_energy = 2.0
 shadow_enabled = true
 directional_shadow_max_distance = 1000.0
 
