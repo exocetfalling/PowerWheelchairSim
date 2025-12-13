@@ -21,6 +21,8 @@ func get_input(delta):
 		rotation = Vector3.ZERO
 	
 	if use_gyroscope:
+		gyroscope_rates = Input.get_gyroscope()
+		
 		rotate_x(gyroscope_rates.x * gyro_factor * delta)
 		rotate_y(gyroscope_rates.y * gyro_factor * delta)
 		rotate_z(gyroscope_rates.z * gyro_factor * delta)
