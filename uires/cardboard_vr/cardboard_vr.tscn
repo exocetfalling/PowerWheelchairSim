@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://7ch0hec1rrfu"]
+
+[ext_resource type="Script" uid="uid://s5ugrpk4rfw4" path="res://uires/cardboard_vr/cardboard_vr.gd" id="1_wfpfy"]
+[ext_resource type="PackedScene" uid="uid://b074dtgfkw0i4" path="res://uires/cardboard_vr/cardboard_view.tscn" id="2_x6e3x"]
+
+[node name="CardboardVR" type="Node3D"]
+script = ExtResource("1_wfpfy")
+
+[node name="PivotL" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0, 0)
+remote_path = NodePath("../SubViewportL/EyeL")
+
+[node name="PivotR" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0, 0)
+remote_path = NodePath("../SubViewportR/EyeR")
+
+[node name="SubViewportL" type="SubViewport" parent="."]
+
+[node name="EyeL" type="Camera3D" parent="SubViewportL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0, 0)
+
+[node name="SubViewportR" type="SubViewport" parent="."]
+
+[node name="EyeR" type="Camera3D" parent="SubViewportR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0, 0)
+
+[node name="CardboardView" parent="." instance=ExtResource("2_x6e3x")]

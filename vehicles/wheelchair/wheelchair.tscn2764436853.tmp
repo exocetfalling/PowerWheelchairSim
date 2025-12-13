@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cymqh3vwjwfxb" path="res://scripts/pid_calc.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://dra5rbwi638wh" path="res://uires/hud_basic/hud_basic.tscn" id="4"]
 [ext_resource type="Script" uid="uid://2htfpjqhnla4" path="res://uires/hud_basic/hud_basic.gd" id="5"]
-[ext_resource type="PackedScene" uid="uid://7ch0hec1rrfu" path="res://uires/cardboard_vr/cardboard_vr.tscn" id="5_v7d5i"]
+[ext_resource type="Script" uid="uid://s5ugrpk4rfw4" path="res://scripts/cardboard_vr_camera.gd" id="5_v7d5i"]
 
 [sub_resource type="GDScript" id="GDScript_j6umd"]
 script/source = "extends VehicleBody3D
@@ -419,5 +419,7 @@ target_position = Vector3(0, 0, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
 
-[node name="CardboardVR" parent="." instance=ExtResource("5_v7d5i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35406, 0)
+[node name="CardboardVRCamera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.452642, 0)
+script = ExtResource("5_v7d5i")
+metadata/_custom_type_script = "uid://s5ugrpk4rfw4"
