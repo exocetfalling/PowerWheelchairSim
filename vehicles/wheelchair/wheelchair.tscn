@@ -21,6 +21,8 @@ size = Vector3(0.413528, 0.536672, 0.0285416)
 
 [node name="Wheelchair" type="VehicleBody3D"]
 mass = 100.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0, -0.05)
 continuous_cd = true
 script = ExtResource("1_uq36a")
 speed_limit = 2.0
@@ -157,4 +159,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
 
 [node name="CardboardVR" parent="." instance=ExtResource("5_v7d5i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35406, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

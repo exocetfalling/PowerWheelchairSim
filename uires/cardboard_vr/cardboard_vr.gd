@@ -36,6 +36,9 @@ func get_input(delta):
 	if Input.is_action_just_pressed("cam_align_fwd"):
 		rotation = Vector3.ZERO
 		initial_yaw = atan2(-magnet.x, magnet.z)
+	
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
 		
 	if use_gyroscope:
 		rotation = rotation_sensor
