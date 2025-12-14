@@ -165,3 +165,6 @@ func get_input(delta):
 		lerp($CameraFPV.rotation.y, Input.get_axis("cam_left", "cam_right") * -3, 0.1)
 	$CameraFPV.position.x = \
 		lerp($CameraFPV.position.x, Input.get_axis("cam_left", "cam_right") * 0.1, 0.1)
+	
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
