@@ -24,7 +24,6 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0, -0.01)
 continuous_cd = true
 script = ExtResource("1_uq36a")
-speed_limit = 2.0
 
 [node name="CollisionShapeSeat" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0738329, 0)
@@ -104,19 +103,13 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="PIDCalcWheelLeft" type="Node" parent="."]
 script = ExtResource("3")
-term_P = 50.0
-term_I = 100.0
+term_P = 100.0
 param_tuning_active = false
 
 [node name="PIDCalcWheelRight" type="Node" parent="."]
 script = ExtResource("3")
-term_P = 50.0
-term_I = 100.0
+term_P = 100.0
 param_tuning_active = false
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-visible = false
-radius = 0.1
 
 [node name="HUDBasic" parent="." instance=ExtResource("4")]
 script = ExtResource("5")
