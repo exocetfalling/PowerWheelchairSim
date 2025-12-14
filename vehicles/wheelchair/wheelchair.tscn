@@ -20,6 +20,8 @@ size = Vector3(0.413528, 0.536672, 0.0285416)
 
 [node name="Wheelchair" type="VehicleBody3D"]
 mass = 100.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0, -0.01)
 continuous_cd = true
 script = ExtResource("1_uq36a")
 speed_limit = 2.0
