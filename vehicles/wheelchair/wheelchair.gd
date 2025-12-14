@@ -36,6 +36,10 @@ var raycast_right_valid: bool = false
 var raycast_left_range: float = 0
 var raycast_right_range: float = 0
 
+var use_vr: bool = false
+const VR_SCENE: PackedScene = preload("res://uires/cardboard_vr/cardboard_vr.tscn")
+var vr_instance = VR_SCENE.instantiate()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -139,7 +143,15 @@ func _process(delta):
 	$Model/CastorRight/WheelFrontRight.rotation.x = $WheelFrontRight.rotation.x
 	
 	$HUDBasic.current_speed = linear_velocity.length()
-	pass
+	
+	if Input.is_action_just_pressed("vr_toggle"):
+		use_vr = not use_vr
+		if use_vr:
+			add_child(vr_instance)
+			vr_instance.position.y = 0.5
+		else:
+			remove_child(vr_instance)
+
 
 func get_input(delta):
 	# Joystick input as axes
