@@ -106,14 +106,14 @@ func _physics_process(delta):
 	
 	turn_radius = -wheel_velocity_ratio * WHEEL_RADIUS_REAR
 	
-	$WheelFrontLeft.steering = rad_to_deg(lerp_angle( \
-		deg_to_rad($WheelFrontLeft.steering), \
-		steering_angle_target_l, \
+	$WheelFrontLeft.steering = rad_to_deg(lerp_angle( 
+		deg_to_rad($WheelFrontLeft.steering), 
+		steering_angle_target_l, 
 		steering_lerp_factor
 		))
-	$WheelFrontRight.steering = rad_to_deg(lerp_angle( \
-		deg_to_rad( $WheelFrontRight.steering), \
-		steering_angle_target_r, \
+	$WheelFrontRight.steering = rad_to_deg(lerp_angle( 
+		deg_to_rad( $WheelFrontRight.steering), 
+		steering_angle_target_r, 
 		steering_lerp_factor
 		))
 	
@@ -157,3 +157,11 @@ func get_input(delta):
 	# Joystick input as axes
 	input_joystick.x = Input.get_axis("joystick_left", "joystick_right")
 	input_joystick.y = Input.get_axis("joystick_down", "joystick_up")
+	
+	# Camera
+	$CameraFPV.rotation.x = \
+		lerp($CameraFPV.rotation.x, Input.get_axis("cam_down", "cam_up"), 0.1)
+	$CameraFPV.rotation.y = \
+		lerp($CameraFPV.rotation.y, Input.get_axis("cam_left", "cam_right") * -3, 0.1)
+	$CameraFPV.position.x = \
+		lerp($CameraFPV.position.x, Input.get_axis("cam_left", "cam_right") * 0.1, 0.1)
