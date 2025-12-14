@@ -94,8 +94,8 @@ func _physics_process(delta):
 	steering_lerp_factor = clamp((linear_velocity_local.length()), 0, 1)
 #	steering_lerp_factor = 0.5
 	
-	wheel_speed_rear_left = $WheelRearLeft.get_rpm() * 0.1047
-	wheel_speed_rear_right = $WheelRearRight.get_rpm() * 0.1047
+	wheel_speed_rear_left = $WheelRearLeft.get_rpm() * 0.1047 * $WheelRearLeft.wheel_radius
+	wheel_speed_rear_right = $WheelRearRight.get_rpm() * 0.1047 * $WheelRearRight.wheel_radius
 	
 	if (wheel_speed_rear_left - wheel_speed_rear_right) != 0:
 		wheel_velocity_ratio = \
@@ -116,9 +116,6 @@ func _physics_process(delta):
 		steering_angle_target_r, 
 		steering_lerp_factor
 		))
-	
-	
-#	$CSGSphere.translation.x = turn_radius
 	
 	pass
 
