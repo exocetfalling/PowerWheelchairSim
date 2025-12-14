@@ -149,3 +149,13 @@ target_position = Vector3(0, 0, 2)
 [node name="ProxSensor09" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.0824538, 0.47)
 target_position = Vector3(0, 0, 2)
+
+[node name="User" type="Node3D" parent="."]
+
+[node name="Torso" type="Node3D" parent="User"]
+
+[node name="Neck" type="Node3D" parent="User/Torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="Head" type="Node3D" parent="User/Torso/Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
