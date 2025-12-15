@@ -43,7 +43,7 @@ var vr_instance = VR_SCENE.instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#DebugOverlay.stats.add_property(self, "input_joystick", "round")
+#	DebugOverlay.stats.add_property(self, "input_joystick", "round")
 #	DebugOverlay.stats.add_property(self, "angular_velocity_local", "round")
 #	DebugOverlay.stats.add_property(self, "steering_angle_target", "round")
 #	DebugOverlay.stats.add_property(self, "steering", "round")
@@ -162,6 +162,25 @@ func get_input(delta):
 		lerp($CameraFPV.rotation.y, Input.get_axis("cam_left", "cam_right") * -3, 0.1)
 	$CameraFPV.position.x = \
 		lerp($CameraFPV.position.x, Input.get_axis("cam_left", "cam_right") * 0.1, 0.1)
+	
+	# Camera translation
+	if use_vr:
+		if vr_instance.rotation_degrees.x > 30:
+			vr_instance.position.z = (vr_instance.rotation_degrees.x - 30) / 500
+		elif vr_instance.rotation_degrees.x < -15:
+			vr_instance.position.z = (vr_instance.rotation_degrees.x + 15) / 500
+		else:
+			vr_instance.position.z = 0
+	else:
+		# Fwd/aft
+		if $CameraFPV.rotation_degrees.x > 30:
+			$CameraFPV.position.z = ($CameraFPV.rotation_degrees.x - 30) / 500
+		elif $CameraFPV.rotation_degrees.x < -15:
+			$CameraFPV.position.z = ($CameraFPV.rotation_degrees.x + 15) / 500
+		else:
+			$CameraFPV.position.z = 0
+		
+		$CameraFPV.position.x = -$CameraFPV.rotation_degrees.y / 500
 	
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
