@@ -31,11 +31,6 @@ var wheel_speed_rear_right_tgt: float = 0.00
 
 @export_range(0.1, 2, 0.1) var turn_rate_scalar: float = 1
 
-var raycast_left_valid: bool = false
-var raycast_right_valid: bool = false
-var raycast_left_range: float = 0
-var raycast_right_range: float = 0
-
 var use_vr: bool = false
 const VR_SCENE: PackedScene = preload("res://uires/cardboard_vr/cardboard_vr.tscn")
 var vr_instance = VR_SCENE.instantiate()
