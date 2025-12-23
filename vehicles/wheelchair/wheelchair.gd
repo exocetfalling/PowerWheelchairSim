@@ -29,18 +29,17 @@ var wheel_speed_rear_right_tgt: float = 0.00
 
 @export_range(0.1, 2, 0.1) var speed_limit: float = 1.5
 
-@export_range(0.1, 2, 0.1) var turn_rate_scalar: float = 1
+@export_range(0.1, 8, 0.1) var turn_rate_scalar: float = 4
 
-var raycast_left_valid: bool = false
-var raycast_right_valid: bool = false
-var raycast_left_range: float = 0
-var raycast_right_range: float = 0
+var use_vr: bool = false
+const VR_SCENE: PackedScene = preload("res://uires/cardboard_vr/cardboard_vr.tscn")
+var vr_instance = VR_SCENE.instantiate()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#DebugOverlay.stats.add_property(self, "input_joystick", "round")
-#	DebugOverlay.stats.add_property(self, "angular_velocity_local", "round")
+#	DebugOverlay.stats.add_property(self, "input_joystick", "round")
+#	DebugOverlay.stats.add_property(self, "angular_velocity", "round")
 #	DebugOverlay.stats.add_property(self, "steering_angle_target", "round")
 #	DebugOverlay.stats.add_property(self, "steering", "round")
 #	DebugOverlay.stats.add_property(self, "wheel_velocity_ratio", "")
@@ -73,11 +72,21 @@ func _physics_process(delta):
 	steering_angle_target_l = atan2(0.391, (turn_radius + $WheelFrontLeft.position.x))
 	steering_angle_target_r = atan2(0.391, (turn_radius + $WheelFrontRight.position.x))
 	
+	# PIDs
+	
 	wheel_speed_rear_left_tgt = \
-		-(+input_joystick.x * turn_rate_scalar + input_joystick.y) * speed_limit / WHEEL_RADIUS_REAR
+		-( \
+			+$PIDCalcTurnRate.calc_PID_output(input_joystick.x * 4, -angular_velocity.y) \
+			+$PIDCalcVelocity.calc_PID_output(input_joystick.y * 1.5, -linear_velocity_local.z) \
+		) \
+		* speed_limit / WHEEL_RADIUS_REAR
 	
 	wheel_speed_rear_right_tgt = \
-		-(-input_joystick.x * turn_rate_scalar + input_joystick.y) * speed_limit / WHEEL_RADIUS_REAR
+		-( \
+			-$PIDCalcTurnRate.calc_PID_output(input_joystick.x * 4, -angular_velocity.y) \
+			+$PIDCalcVelocity.calc_PID_output(input_joystick.y * 1.5, -linear_velocity_local.z) \
+		) \
+		* speed_limit / WHEEL_RADIUS_REAR
 	
 	$WheelRearLeft.engine_force = \
 		$PIDCalcWheelLeft.calc_PID_output(wheel_speed_rear_left_tgt, wheel_speed_rear_left)
@@ -88,10 +97,9 @@ func _physics_process(delta):
 	# Increase caster turn rate as velocity increases
 	# Clamping from 0 to 1
 	steering_lerp_factor = clamp((linear_velocity_local.length()), 0, 1)
-#	steering_lerp_factor = 0.5
 	
-	wheel_speed_rear_left = $WheelRearLeft.get_rpm() * 0.1047
-	wheel_speed_rear_right = $WheelRearRight.get_rpm() * 0.1047
+	wheel_speed_rear_left = $WheelRearLeft.get_rpm() * 0.1047 * $WheelRearLeft.wheel_radius
+	wheel_speed_rear_right = $WheelRearRight.get_rpm() * 0.1047 * $WheelRearRight.wheel_radius
 	
 	if (wheel_speed_rear_left - wheel_speed_rear_right) != 0:
 		wheel_velocity_ratio = \
@@ -102,19 +110,16 @@ func _physics_process(delta):
 	
 	turn_radius = -wheel_velocity_ratio * WHEEL_RADIUS_REAR
 	
-	$WheelFrontLeft.steering = rad_to_deg(lerp_angle( \
-		deg_to_rad($WheelFrontLeft.steering), \
-		steering_angle_target_l, \
+	$WheelFrontLeft.steering = rad_to_deg(lerp_angle( 
+		deg_to_rad($WheelFrontLeft.steering), 
+		steering_angle_target_l, 
 		steering_lerp_factor
 		))
-	$WheelFrontRight.steering = rad_to_deg(lerp_angle( \
-		deg_to_rad( $WheelFrontRight.steering), \
-		steering_angle_target_r, \
+	$WheelFrontRight.steering = rad_to_deg(lerp_angle( 
+		deg_to_rad($WheelFrontRight.steering), 
+		steering_angle_target_r, 
 		steering_lerp_factor
 		))
-	
-	
-#	$CSGSphere.translation.x = turn_radius
 	
 	pass
 
@@ -139,9 +144,47 @@ func _process(delta):
 	$Model/CastorRight/WheelFrontRight.rotation.x = $WheelFrontRight.rotation.x
 	
 	$HUDBasic.current_speed = linear_velocity.length()
-	pass
+	
+	if Input.is_action_just_pressed("vr_toggle"):
+		use_vr = not use_vr
+		if use_vr:
+			add_child(vr_instance)
+			vr_instance.position.y = 0.5
+		else:
+			remove_child(vr_instance)
+
 
 func get_input(delta):
 	# Joystick input as axes
 	input_joystick.x = Input.get_axis("joystick_left", "joystick_right")
 	input_joystick.y = Input.get_axis("joystick_down", "joystick_up")
+	
+	# Camera
+	$CameraFPV.rotation.x = \
+		lerp($CameraFPV.rotation.x, Input.get_axis("cam_down", "cam_up"), 0.1)
+	$CameraFPV.rotation.y = \
+		lerp($CameraFPV.rotation.y, Input.get_axis("cam_left", "cam_right") * -3, 0.1)
+	$CameraFPV.position.x = \
+		lerp($CameraFPV.position.x, Input.get_axis("cam_left", "cam_right") * 0.1, 0.1)
+	
+	# Camera translation
+	if use_vr:
+		if vr_instance.rotation_degrees.x > 30:
+			vr_instance.position.z = (vr_instance.rotation_degrees.x - 30) / 500
+		elif vr_instance.rotation_degrees.x < -15:
+			vr_instance.position.z = (vr_instance.rotation_degrees.x + 15) / 500
+		else:
+			vr_instance.position.z = 0
+	else:
+		# Fwd/aft
+		if $CameraFPV.rotation_degrees.x > 30:
+			$CameraFPV.position.z = ($CameraFPV.rotation_degrees.x - 30) / 500
+		elif $CameraFPV.rotation_degrees.x < -15:
+			$CameraFPV.position.z = ($CameraFPV.rotation_degrees.x + 15) / 500
+		else:
+			$CameraFPV.position.z = 0
+		
+		$CameraFPV.position.x = -$CameraFPV.rotation_degrees.y / 500
+	
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()

@@ -6,10 +6,6 @@ extends Node
 # var b = "text"
 
 
-# Units of measure
-# Metric = 0
-# Aviation = 1
-var setting_units : int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,5 +14,5 @@ func _ready():
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	pass

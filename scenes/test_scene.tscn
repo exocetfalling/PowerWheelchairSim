@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://o67y67hjrfxm"]
+[gd_scene load_steps=19 format=3 uid="uid://o67y67hjrfxm"]
 
 [ext_resource type="PackedScene" uid="uid://c0v0s0n3sp000" path="res://vehicles/wheelchair/wheelchair.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c7vk3dblv23sr" path="res://assets/modern_house/modern_house.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://db33kxe003a6r" path="res://objects/traffic_cone/traffic_cone.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://nqnoncdfygcf" path="res://terrain/terrain_pbr/terrain_pbr.tscn" id="4_7ddre"]
-[ext_resource type="PackedScene" uid="uid://dbhn3a1ct8olw" path="res://objects/table_small/table_small.tscn" id="4_qjeyg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x84t8"]
 sky_top_color = Color(9.62615e-08, 0.491821, 0.648355, 1)
@@ -15,8 +14,6 @@ sky_material = SubResource("ProceduralSkyMaterial_x84t8")
 [sub_resource type="Environment" id="Environment_3o5kj"]
 background_mode = 2
 sky = SubResource("Sky_rih0r")
-tonemap_mode = 2
-tonemap_exposure = 2.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_40cm2"]
 
@@ -78,8 +75,7 @@ size = Vector3(1.2, 1, 8)
 material = SubResource("StandardMaterial3D_gthg3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-1, -4.37114e-08, 7.57103e-08, 0, 0.866025, 0.5, -8.74228e-08, 0.5, -0.866025, 0, 400, -800)
-light_energy = 2.0
+transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 400, -800)
 shadow_enabled = true
 directional_shadow_max_distance = 1000.0
 
@@ -88,8 +84,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 
 [node name="TrafficCone" parent="." instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.105, 13)
-
-[node name="TableSmall" parent="." instance=ExtResource("4_qjeyg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36319, 0, 18.0238)
 
 [node name="TerrainPBR" parent="." instance=ExtResource("4_7ddre")]
