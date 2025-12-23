@@ -29,7 +29,7 @@ var wheel_speed_rear_right_tgt: float = 0.00
 
 @export_range(0.1, 2, 0.1) var speed_limit: float = 1.5
 
-@export_range(0.1, 2, 0.1) var turn_rate_scalar: float = 1
+@export_range(0.1, 8, 0.1) var turn_rate_scalar: float = 4
 
 var use_vr: bool = false
 const VR_SCENE: PackedScene = preload("res://uires/cardboard_vr/cardboard_vr.tscn")
@@ -39,7 +39,7 @@ var vr_instance = VR_SCENE.instantiate()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	DebugOverlay.stats.add_property(self, "input_joystick", "round")
-#	DebugOverlay.stats.add_property(self, "angular_velocity_local", "round")
+#	DebugOverlay.stats.add_property(self, "angular_velocity", "round")
 #	DebugOverlay.stats.add_property(self, "steering_angle_target", "round")
 #	DebugOverlay.stats.add_property(self, "steering", "round")
 #	DebugOverlay.stats.add_property(self, "wheel_velocity_ratio", "")
@@ -72,11 +72,21 @@ func _physics_process(delta):
 	steering_angle_target_l = atan2(0.391, (turn_radius + $WheelFrontLeft.position.x))
 	steering_angle_target_r = atan2(0.391, (turn_radius + $WheelFrontRight.position.x))
 	
+	# PIDs
+	
 	wheel_speed_rear_left_tgt = \
-		-(+input_joystick.x * turn_rate_scalar + input_joystick.y) * speed_limit / WHEEL_RADIUS_REAR
+		-( \
+			+$PIDCalcTurnRate.calc_PID_output(input_joystick.x * 4, -angular_velocity.y) \
+			+$PIDCalcVelocity.calc_PID_output(input_joystick.y * 1.5, -linear_velocity_local.z) \
+		) \
+		* speed_limit / WHEEL_RADIUS_REAR
 	
 	wheel_speed_rear_right_tgt = \
-		-(-input_joystick.x * turn_rate_scalar + input_joystick.y) * speed_limit / WHEEL_RADIUS_REAR
+		-( \
+			-$PIDCalcTurnRate.calc_PID_output(input_joystick.x * 4, -angular_velocity.y) \
+			+$PIDCalcVelocity.calc_PID_output(input_joystick.y * 1.5, -linear_velocity_local.z) \
+		) \
+		* speed_limit / WHEEL_RADIUS_REAR
 	
 	$WheelRearLeft.engine_force = \
 		$PIDCalcWheelLeft.calc_PID_output(wheel_speed_rear_left_tgt, wheel_speed_rear_left)
@@ -87,7 +97,6 @@ func _physics_process(delta):
 	# Increase caster turn rate as velocity increases
 	# Clamping from 0 to 1
 	steering_lerp_factor = clamp((linear_velocity_local.length()), 0, 1)
-#	steering_lerp_factor = 0.5
 	
 	wheel_speed_rear_left = $WheelRearLeft.get_rpm() * 0.1047 * $WheelRearLeft.wheel_radius
 	wheel_speed_rear_right = $WheelRearRight.get_rpm() * 0.1047 * $WheelRearRight.wheel_radius
@@ -107,7 +116,7 @@ func _physics_process(delta):
 		steering_lerp_factor
 		))
 	$WheelFrontRight.steering = rad_to_deg(lerp_angle( 
-		deg_to_rad( $WheelFrontRight.steering), 
+		deg_to_rad($WheelFrontRight.steering), 
 		steering_angle_target_r, 
 		steering_lerp_factor
 		))

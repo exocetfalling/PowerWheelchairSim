@@ -21,7 +21,7 @@ size = Vector3(0.413528, 0.536672, 0.0285416)
 [node name="Wheelchair" type="VehicleBody3D"]
 mass = 100.0
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, 0, -0.01)
+center_of_mass = Vector3(0, -0.1, -0.01)
 continuous_cd = true
 script = ExtResource("1_uq36a")
 
@@ -104,12 +104,21 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="PIDCalcWheelLeft" type="Node" parent="."]
 script = ExtResource("3")
 term_P = 70.0
-param_tuning_active = false
 
 [node name="PIDCalcWheelRight" type="Node" parent="."]
 script = ExtResource("3")
 term_P = 70.0
-param_tuning_active = false
+
+[node name="PIDCalcVelocity" type="Node" parent="."]
+script = ExtResource("3")
+term_P = 1.0
+term_I = 1.0
+term_D = 0.05
+
+[node name="PIDCalcTurnRate" type="Node" parent="."]
+script = ExtResource("3")
+term_P = 1.0
+term_D = 0.05
 
 [node name="HUDBasic" parent="." instance=ExtResource("4")]
 script = ExtResource("5")
