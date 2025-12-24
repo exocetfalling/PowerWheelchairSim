@@ -10,7 +10,7 @@
 size = Vector3(0.414, 0.04, 0.5)
 
 [sub_resource type="BoxShape3D" id="4"]
-size = Vector3(0.414, 0.04, 0.35)
+size = Vector3(0.05, 0.04, 0.35)
 
 [sub_resource type="BoxShape3D" id="3"]
 size = Vector3(0.333988, 0.04, 0.090221)
@@ -29,8 +29,12 @@ script = ExtResource("1_uq36a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0738329, 0)
 shape = SubResource("2")
 
-[node name="CollisionShapeAntiTip" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.349691, 0.335893)
+[node name="CollisionShapeAntiTipL" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, -0.185, -0.35, 0.336)
+shape = SubResource("4")
+
+[node name="CollisionShapeAntiTipR" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0.185, -0.35, 0.336)
 shape = SubResource("4")
 
 [node name="CollisionShapeFootrest" type="CollisionShape3D" parent="."]

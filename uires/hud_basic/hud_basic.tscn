@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dra5rbwi638wh"]
 
 [ext_resource type="PackedScene" uid="uid://bxqrouy7bbdl" path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" id="1"]
-[ext_resource type="FontFile" uid="uid://c5rmmsxmyvt0" path="res://assets/fonts/B612Mono-Regular.ttf" id="1_7l063"]
+[ext_resource type="FontFile" uid="uid://6hy24fcmknn0" path="res://assets/fonts/B612Mono-Regular.ttf" id="1_7l063"]
 
 [sub_resource type="Theme" id="Theme_iajoa"]
 default_font = ExtResource("1_7l063")
