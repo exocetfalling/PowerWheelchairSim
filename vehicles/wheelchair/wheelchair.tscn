@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0v0s0n3sp000"]
+[gd_scene format=3 uid="uid://c0v0s0n3sp000"]
 
 [ext_resource type="PackedScene" uid="uid://bbh72u2em64ms" path="res://vehicles/wheelchair/model/wheelchair_model.tscn" id="1"]
 [ext_resource type="Script" uid="uid://cce6jxjwy64wh" path="res://vehicles/wheelchair/wheelchair.gd" id="1_uq36a"]
@@ -18,36 +18,36 @@ size = Vector3(0.333988, 0.04, 0.090221)
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(0.413528, 0.536672, 0.0285416)
 
-[node name="Wheelchair" type="VehicleBody3D"]
+[node name="Wheelchair" type="VehicleBody3D" unique_id=777510085]
 mass = 100.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.1, -0.01)
 continuous_cd = true
 script = ExtResource("1_uq36a")
 
-[node name="CollisionShapeSeat" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeSeat" type="CollisionShape3D" parent="." unique_id=1948078032]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0738329, 0)
 shape = SubResource("2")
 
-[node name="CollisionShapeAntiTipL" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeAntiTipL" type="CollisionShape3D" parent="." unique_id=1257676881]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, -0.185, -0.35, 0.336)
 shape = SubResource("4")
 
-[node name="CollisionShapeAntiTipR" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeAntiTipR" type="CollisionShape3D" parent="." unique_id=328543937]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0.185, -0.35, 0.336)
 shape = SubResource("4")
 
-[node name="CollisionShapeFootrest" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeFootrest" type="CollisionShape3D" parent="." unique_id=1121140336]
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.398437, -0.460226)
 shape = SubResource("3")
 
-[node name="CollisionShapeBack" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeBack" type="CollisionShape3D" parent="." unique_id=276851136]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0493933, 0.187811)
 shape = SubResource("1")
 
-[node name="Model" parent="." instance=ExtResource("1")]
+[node name="Model" parent="." unique_id=1204945711 instance=ExtResource("1")]
 
-[node name="WheelRearLeft" type="VehicleWheel3D" parent="."]
+[node name="WheelRearLeft" type="VehicleWheel3D" parent="." unique_id=499639790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, -0.21, 0.173)
 use_as_traction = true
 wheel_roll_influence = 0.5
@@ -60,7 +60,7 @@ suspension_max_force = 400.0
 damping_compression = 1.0
 damping_relaxation = 1.0
 
-[node name="WheelRearRight" type="VehicleWheel3D" parent="."]
+[node name="WheelRearRight" type="VehicleWheel3D" parent="." unique_id=1962307127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245, -0.21, 0.173)
 use_as_traction = true
 wheel_roll_influence = 0.5
@@ -73,7 +73,7 @@ suspension_max_force = 400.0
 damping_compression = 1.0
 damping_relaxation = 1.0
 
-[node name="WheelFrontLeft" type="VehicleWheel3D" parent="."]
+[node name="WheelFrontLeft" type="VehicleWheel3D" parent="." unique_id=165868974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245, -0.412604, -0.218373)
 use_as_steering = true
 wheel_radius = 0.08
@@ -85,7 +85,7 @@ suspension_max_force = 400.0
 damping_compression = 1.0
 damping_relaxation = 1.0
 
-[node name="WheelFrontRight" type="VehicleWheel3D" parent="."]
+[node name="WheelFrontRight" type="VehicleWheel3D" parent="." unique_id=1951119642]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245, -0.413, -0.218)
 use_as_steering = true
 wheel_radius = 0.08
@@ -97,32 +97,32 @@ suspension_max_force = 400.0
 damping_compression = 1.0
 damping_relaxation = 1.0
 
-[node name="CameraFPV" type="Camera3D" parent="."]
+[node name="CameraFPV" type="Camera3D" parent="." unique_id=1579123492]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0.5, 0)
 keep_aspect = 0
 far = 10000.0
 
-[node name="CameraRear" type="Camera3D" parent="."]
+[node name="CameraRear" type="Camera3D" parent="." unique_id=597281934]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.229124)
 
-[node name="PIDCalcWheelLeft" type="Node" parent="."]
+[node name="PIDCalcWheelLeft" type="Node" parent="." unique_id=1671957771]
 script = ExtResource("3")
 term_P = 70.0
 
-[node name="PIDCalcWheelRight" type="Node" parent="."]
+[node name="PIDCalcWheelRight" type="Node" parent="." unique_id=1583415497]
 script = ExtResource("3")
 term_P = 70.0
 
-[node name="PIDCalcVelocity" type="Node" parent="."]
+[node name="PIDCalcVelocity" type="Node" parent="." unique_id=934795321]
 script = ExtResource("3")
 term_P = 1.0
 term_I = 1.0
 term_D = 0.05
 
-[node name="PIDCalcTurnRate" type="Node" parent="."]
+[node name="PIDCalcTurnRate" type="Node" parent="." unique_id=1198457317]
 script = ExtResource("3")
 term_P = 1.0
 term_D = 0.05
 
-[node name="HUDBasic" parent="." instance=ExtResource("4")]
+[node name="HUDBasic" parent="." unique_id=762112098 instance=ExtResource("4")]
 script = ExtResource("5")
