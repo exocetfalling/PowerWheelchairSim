@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cyfn6hmtj6lb3"]
+
+[ext_resource type="Texture2D" uid="uid://mao3wbc4jec" path="res://objects/bridges/bridge_large/bridge_tex_albedo.tres" id="1_ui1na"]
+[ext_resource type="Texture2D" uid="uid://l7ob8xgrg2ao" path="res://objects/bridges/bridge_large/bridge_tex_norm.tres" id="2_1nf71"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebiq8"]
+albedo_texture = ExtResource("1_ui1na")
+normal_enabled = true
+normal_texture = ExtResource("2_1nf71")
+
+[node name="BridgeLarge" type="RigidBody3D" unique_id=2125225300]
+mass = 2000.0
+freeze = true
+
+[node name="Mesh" type="Node3D" parent="." unique_id=51630054]
+
+[node name="Top" type="CSGBox3D" parent="Mesh" unique_id=1302456745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+use_collision = true
+size = Vector3(2, 0.1, 20)
+material = SubResource("StandardMaterial3D_ebiq8")
+
+[node name="Bottom" type="CSGBox3D" parent="Mesh" unique_id=824950284]
+use_collision = true
+size = Vector3(5, 0.1, 80)
+material = SubResource("StandardMaterial3D_ebiq8")
+
+[node name="Ramp1" type="CSGBox3D" parent="Mesh" unique_id=263415019]
+transform = Transform3D(1, 0, 0, 0, 0.99619466, -0.08715573, 0, 0.08715573, 0.99619466, 0, 1, 21.429829)
+use_collision = true
+size = Vector3(2, 0.1, 22.95)
+material = SubResource("StandardMaterial3D_ebiq8")
+
+[node name="Ramp2" type="CSGBox3D" parent="Mesh" unique_id=1584847643]
+transform = Transform3D(1, 0, 0, 0, 0.99619466, 0.08715573, 0, -0.08715573, 0.99619466, 0, 1, -21.43)
+use_collision = true
+size = Vector3(2, 0.1, 22.95)
+material = SubResource("StandardMaterial3D_ebiq8")
