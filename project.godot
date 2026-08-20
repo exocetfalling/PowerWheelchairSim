@@ -14,7 +14,7 @@ config/name="PowerWheelchairSim"
 config/version="0.2.5"
 run/main_scene="res://scenes/test_scene.tscn"
 config/features=PackedStringArray("4.6")
-config/icon="uid://dr30aajpjoynd"
+config/icon="uid://b8k47r0amqa8q"
 
 [autoload]
 
