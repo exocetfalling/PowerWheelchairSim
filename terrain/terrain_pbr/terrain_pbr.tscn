@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://nqnoncdfygcf"]
+[gd_scene format=3 uid="uid://nqnoncdfygcf"]
 
 [ext_resource type="Script" uid="uid://bh31ivjh5wxkj" path="res://addons/zylann.hterrain/hterrain.gd" id="1_056hm"]
 [ext_resource type="Resource" uid="uid://c3tn6alywd1hy" path="res://terrain/terrain_pbr/data.hterrain" id="2_apggt"]
@@ -15,7 +15,7 @@ script = ExtResource("2_u5u1b")
 mode = 0
 textures = [[ExtResource("4_j3fjq")], [ExtResource("6_4uldo")]]
 
-[node name="TerrainPBR" type="Node3D"]
+[node name="TerrainPBR" type="Node3D" unique_id=1990854739]
 script = ExtResource("1_056hm")
 centered = true
 _terrain_data = ExtResource("2_apggt")
@@ -37,7 +37,7 @@ shader_params/u_globalmap_blend_start = null
 shader_params/u_globalmap_blend_distance = null
 shader_params/u_colormap_opacity_per_texture = null
 
-[node name="HTerrainDetailLayer" type="Node3D" parent="."]
+[node name="HTerrainDetailLayer" type="Node3D" parent="." unique_id=1209389333]
 script = ExtResource("4_l4dip")
 texture = ExtResource("5_d65dy")
 view_distance = 50.0

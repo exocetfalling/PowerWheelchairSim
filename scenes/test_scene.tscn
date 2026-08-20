@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://o67y67hjrfxm"]
+[gd_scene format=3 uid="uid://o67y67hjrfxm"]
 
 [ext_resource type="PackedScene" uid="uid://c0v0s0n3sp000" path="res://vehicles/wheelchair/wheelchair.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c7vk3dblv23sr" path="res://assets/modern_house/modern_house.tscn" id="3"]
@@ -22,8 +22,8 @@ sky = SubResource("Sky_rih0r")
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7ddre"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qjeyg"]
-seamless = true
 noise = SubResource("FastNoiseLite_7ddre")
+seamless = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qnke"]
 albedo_texture = SubResource("NoiseTexture2D_qjeyg")
@@ -31,8 +31,8 @@ albedo_texture = SubResource("NoiseTexture2D_qjeyg")
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wtsjf"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rnaij"]
-seamless = true
 noise = SubResource("FastNoiseLite_wtsjf")
+seamless = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3xc6"]
 albedo_texture = SubResource("NoiseTexture2D_rnaij")
@@ -40,49 +40,49 @@ albedo_texture = SubResource("NoiseTexture2D_rnaij")
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_s36qc"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6qxox"]
-seamless = true
 noise = SubResource("FastNoiseLite_s36qc")
+seamless = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gthg3"]
 albedo_texture = SubResource("NoiseTexture2D_6qxox")
 
-[node name="TestScene" type="Node3D"]
+[node name="TestScene" type="Node3D" unique_id=94623899]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=618770597]
 environment = SubResource("Environment_3o5kj")
 camera_attributes = SubResource("CameraAttributesPractical_40cm2")
 compositor = SubResource("Compositor_o28ja")
 
-[node name="Wheelchair" parent="." instance=ExtResource("2")]
+[node name="Wheelchair" parent="." unique_id=365094530 instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, 20.8348)
 
-[node name="Plank01" type="CSGBox3D" parent="."]
+[node name="Plank01" type="CSGBox3D" parent="." unique_id=469166434]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.95, 7.16018)
 use_collision = true
 size = Vector3(1.2, 0.1, 8)
 material = SubResource("StandardMaterial3D_3qnke")
 
-[node name="Ramp01" type="CSGBox3D" parent="."]
+[node name="Ramp01" type="CSGBox3D" parent="." unique_id=211876558]
 transform = Transform3D(1, 0, 0, 0, 0.990268, -0.139173, 0, 0.139173, 0.990268, 10, -0.051, 15)
 use_collision = true
 size = Vector3(1.2, 1, 8)
 material = SubResource("StandardMaterial3D_h3xc6")
 
-[node name="Ramp02" type="CSGBox3D" parent="."]
+[node name="Ramp02" type="CSGBox3D" parent="." unique_id=701232501]
 transform = Transform3D(-1, -1.21669e-08, -8.6572e-08, 0, 0.990268, -0.139173, 8.74228e-08, -0.139173, -0.990268, 10, -0.051, -0.694582)
 use_collision = true
 size = Vector3(1.2, 1, 8)
 material = SubResource("StandardMaterial3D_gthg3")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=578988254]
 transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 400, -800)
 shadow_enabled = true
 directional_shadow_max_distance = 1000.0
 
-[node name="ModernHouse" parent="." instance=ExtResource("3")]
+[node name="ModernHouse" parent="." unique_id=664912625 instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 
-[node name="TrafficCone" parent="." instance=ExtResource("4")]
+[node name="TrafficCone" parent="." unique_id=1480250839 instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.105, 13)
 
-[node name="TerrainPBR" parent="." instance=ExtResource("4_7ddre")]
+[node name="TerrainPBR" parent="." unique_id=1122302774 instance=ExtResource("4_7ddre")]

@@ -1,27 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://7ch0hec1rrfu"]
+[gd_scene format=3 uid="uid://7ch0hec1rrfu"]
 
 [ext_resource type="Script" uid="uid://s5ugrpk4rfw4" path="res://uires/cardboard_vr/cardboard_vr.gd" id="1_wfpfy"]
 [ext_resource type="PackedScene" uid="uid://b074dtgfkw0i4" path="res://uires/cardboard_vr/cardboard_view.tscn" id="2_x6e3x"]
 
-[node name="CardboardVR" type="Node3D"]
+[node name="CardboardVR" type="Node3D" unique_id=1890795000]
 script = ExtResource("1_wfpfy")
 
-[node name="PivotL" type="RemoteTransform3D" parent="."]
+[node name="PivotL" type="RemoteTransform3D" parent="." unique_id=972943213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.05, -0.03)
 remote_path = NodePath("../SubViewportL/EyeL")
 
-[node name="PivotR" type="RemoteTransform3D" parent="."]
+[node name="PivotR" type="RemoteTransform3D" parent="." unique_id=907851419]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0.05, -0.03)
 remote_path = NodePath("../SubViewportR/EyeR")
 
-[node name="SubViewportL" type="SubViewport" parent="."]
+[node name="SubViewportL" type="SubViewport" parent="." unique_id=2145994773]
 
-[node name="EyeL" type="Camera3D" parent="SubViewportL"]
+[node name="EyeL" type="Camera3D" parent="SubViewportL" unique_id=1586786097]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03, 0.05, -0.03)
 
-[node name="SubViewportR" type="SubViewport" parent="."]
+[node name="SubViewportR" type="SubViewport" parent="." unique_id=1425745480]
 
-[node name="EyeR" type="Camera3D" parent="SubViewportR"]
+[node name="EyeR" type="Camera3D" parent="SubViewportR" unique_id=1739436342]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0.05, -0.03)
 
-[node name="CardboardView" parent="." instance=ExtResource("2_x6e3x")]
+[node name="CardboardView" parent="." unique_id=175060760 instance=ExtResource("2_x6e3x")]

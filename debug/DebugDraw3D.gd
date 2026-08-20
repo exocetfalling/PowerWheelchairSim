@@ -67,8 +67,8 @@ func add_line(object, start, end, width, color):
 		lines[object] = []
 	lines[object].append(Line.new(start, end, width, color))
 	
-func add_vector(object, value, size, width, color):
-	vectors.append(Vector.new(object, value, size, width, color))
+func add_vector(object, value, vec_size, width, color):
+	vectors.append(Vector.new(object, value, vec_size, width, color))
 	print("registered %s of %s." % [value, object.name])
 	
 func remove_vector(object, property):
@@ -78,8 +78,8 @@ func remove_vector(object, property):
 			print("removed %s of %s." % [property, object.name])
 			break
 
-func draw_triangle(pos, dir, size, color):
-	var a = pos + dir * size
+func draw_triangle(pos, dir, tri_size, color):
+	var a = pos + dir * tri_size
 	var b = pos + dir.rotated(2*PI/3) * size
 	var c = pos + dir.rotated(4*PI/3) * size
 	var points = PackedVector2Array([a, b, c])

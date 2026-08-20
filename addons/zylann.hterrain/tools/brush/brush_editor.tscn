@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd42ig216p216"]
+[gd_scene format=3 uid="uid://bd42ig216p216"]
 
 [ext_resource type="Script" uid="uid://bjgpk7rthp4yg" path="res://addons/zylann.hterrain/tools/brush/brush_editor.gd" id="1"]
 [ext_resource type="Script" uid="uid://edowh0ede1wr" path="res://addons/zylann.hterrain/tools/util/interval_slider.gd" id="3"]
@@ -6,17 +6,17 @@
 [sub_resource type="CanvasItemMaterial" id="1"]
 blend_mode = 1
 
-[node name="BrushEditor" type="HBoxContainer"]
+[node name="BrushEditor" type="HBoxContainer" unique_id=1933400468]
 custom_minimum_size = Vector2(200, 0)
 offset_right = 293.0
 offset_bottom = 211.0
 script = ExtResource("1")
 
-[node name="BrushShapeButton" type="Button" parent="."]
+[node name="BrushShapeButton" type="Button" parent="." unique_id=452239174]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="BrushShapeButton"]
+[node name="TextureRect" type="TextureRect" parent="BrushShapeButton" unique_id=1711671606]
 material = SubResource("1")
 layout_mode = 0
 anchor_right = 1.0
@@ -25,21 +25,21 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1868591411]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 
-[node name="BrushSizeLabel" type="Label" parent="GridContainer"]
+[node name="BrushSizeLabel" type="Label" parent="GridContainer" unique_id=1901851109]
 layout_mode = 2
 text = "Brush size"
 
-[node name="BrushSizeControl" type="HBoxContainer" parent="GridContainer"]
+[node name="BrushSizeControl" type="HBoxContainer" parent="GridContainer" unique_id=556097169]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 
-[node name="Slider" type="HSlider" parent="GridContainer/BrushSizeControl"]
+[node name="Slider" type="HSlider" parent="GridContainer/BrushSizeControl" unique_id=1489953073]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -50,81 +50,81 @@ value = 2.0
 exp_edit = true
 rounded = true
 
-[node name="Label" type="Label" parent="GridContainer/BrushSizeControl"]
+[node name="Label" type="Label" parent="GridContainer/BrushSizeControl" unique_id=79775297]
 layout_mode = 2
 text = "999"
 
-[node name="BrushOpacityLabel" type="Label" parent="GridContainer"]
+[node name="BrushOpacityLabel" type="Label" parent="GridContainer" unique_id=856238632]
 layout_mode = 2
 text = "Brush opacity"
 
-[node name="BrushOpacityControl" type="HBoxContainer" parent="GridContainer"]
+[node name="BrushOpacityControl" type="HBoxContainer" parent="GridContainer" unique_id=1536952694]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Slider" type="HSlider" parent="GridContainer/BrushOpacityControl"]
+[node name="Slider" type="HSlider" parent="GridContainer/BrushOpacityControl" unique_id=1547231937]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="Label" type="Label" parent="GridContainer/BrushOpacityControl"]
+[node name="Label" type="Label" parent="GridContainer/BrushOpacityControl" unique_id=402426282]
 layout_mode = 2
 text = "999"
 
-[node name="FlattenHeightLabel" type="Label" parent="GridContainer"]
+[node name="FlattenHeightLabel" type="Label" parent="GridContainer" unique_id=1304398070]
 layout_mode = 2
 text = "Flatten height"
 
-[node name="HB" type="HBoxContainer" parent="GridContainer"]
+[node name="HB" type="HBoxContainer" parent="GridContainer" unique_id=2006408232]
 layout_mode = 2
 
-[node name="FlattenHeightControl" type="SpinBox" parent="GridContainer/HB"]
+[node name="FlattenHeightControl" type="SpinBox" parent="GridContainer/HB" unique_id=2111937506]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = -500.0
 max_value = 500.0
 step = 0.01
 
-[node name="FlattenHeightPickButton" type="Button" parent="GridContainer/HB"]
+[node name="FlattenHeightPickButton" type="Button" parent="GridContainer/HB" unique_id=1193507401]
 layout_mode = 2
 toggle_mode = true
 text = "Pick"
 
-[node name="ColorLabel" type="Label" parent="GridContainer"]
+[node name="ColorLabel" type="Label" parent="GridContainer" unique_id=401229548]
 layout_mode = 2
 text = "Color"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="GridContainer"]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="GridContainer" unique_id=1035092230]
 layout_mode = 2
 toggle_mode = false
 color = Color(1, 1, 1, 1)
 
-[node name="DensityLabel" type="Label" parent="GridContainer"]
+[node name="DensityLabel" type="Label" parent="GridContainer" unique_id=1014385480]
 layout_mode = 2
 text = "Detail density"
 
-[node name="DensitySlider" type="HSlider" parent="GridContainer"]
+[node name="DensitySlider" type="HSlider" parent="GridContainer" unique_id=1602957010]
 layout_mode = 2
 max_value = 1.0
 step = 0.1
 
-[node name="HoleLabel" type="Label" parent="GridContainer"]
+[node name="HoleLabel" type="Label" parent="GridContainer" unique_id=1200072514]
 layout_mode = 2
 text = "Draw holes"
 
-[node name="HoleCheckbox" type="CheckBox" parent="GridContainer"]
+[node name="HoleCheckbox" type="CheckBox" parent="GridContainer" unique_id=822024626]
 layout_mode = 2
 
-[node name="SlopeLimitLabel" type="Label" parent="GridContainer"]
+[node name="SlopeLimitLabel" type="Label" parent="GridContainer" unique_id=98568762]
 layout_mode = 2
 text = "Slope limit"
 
-[node name="SlopeLimit" type="Control" parent="GridContainer"]
+[node name="SlopeLimit" type="Control" parent="GridContainer" unique_id=1653569783]
 layout_mode = 2
 script = ExtResource("3")
 range = Vector2(0, 90)
 
-[node name="Temp" type="Node" parent="."]
+[node name="Temp" type="Node" parent="." unique_id=1668847783]
 
 [connection signal="pressed" from="BrushShapeButton" to="." method="_on_BrushShapeButton_pressed"]
 [connection signal="pressed" from="GridContainer/HB/FlattenHeightPickButton" to="." method="_on_FlattenHeightPickButton_pressed"]

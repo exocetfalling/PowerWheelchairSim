@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbhn3a1ct8olw"]
+[gd_scene format=3 uid="uid://dbhn3a1ct8olw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_e00my"]
 height = 0.02
@@ -16,36 +16,36 @@ transparency = 1
 albedo_color = Color(0.745098, 1, 0.733333, 0.235294)
 refraction_texture_channel = 3
 
-[node name="TableSmall" type="RigidBody3D"]
+[node name="TableSmall" type="RigidBody3D" unique_id=112951761]
 mass = 250.0
 
-[node name="Top" type="CollisionShape3D" parent="."]
+[node name="Top" type="CollisionShape3D" parent="." unique_id=2020983335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76, 0)
 shape = SubResource("CylinderShape3D_e00my")
 
-[node name="Post" type="CollisionShape3D" parent="."]
+[node name="Post" type="CollisionShape3D" parent="." unique_id=1080699364]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 shape = SubResource("CylinderShape3D_pwlc6")
 
-[node name="Base" type="CollisionShape3D" parent="."]
+[node name="Base" type="CollisionShape3D" parent="." unique_id=2040434550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
 shape = SubResource("CylinderShape3D_oxvkq")
 
-[node name="Mesh" type="Node3D" parent="."]
+[node name="Mesh" type="Node3D" parent="." unique_id=1605068486]
 
-[node name="Top" type="CSGCylinder3D" parent="Mesh"]
+[node name="Top" type="CSGCylinder3D" parent="Mesh" unique_id=1660843703]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76, 0)
 height = 0.02
 sides = 32
 material = SubResource("StandardMaterial3D_pwlc6")
 
-[node name="Post" type="CSGCylinder3D" parent="Mesh"]
+[node name="Post" type="CSGCylinder3D" parent="Mesh" unique_id=4007008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 radius = 0.05
 height = 0.75
 sides = 32
 
-[node name="Base" type="CSGCylinder3D" parent="Mesh"]
+[node name="Base" type="CSGCylinder3D" parent="Mesh" unique_id=790479467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
 radius = 0.25
 height = 0.04

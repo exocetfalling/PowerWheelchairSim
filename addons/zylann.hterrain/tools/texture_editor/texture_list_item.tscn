@@ -1,25 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://daugk4kdnx6vy"]
+[gd_scene format=3 uid="uid://daugk4kdnx6vy"]
 
 [ext_resource type="Script" uid="uid://bce4t5age0si" path="res://addons/zylann.hterrain/tools/texture_editor/texture_list_item.gd" id="2"]
 
-[node name="TextureListItem" type="PanelContainer"]
+[node name="TextureListItem" type="PanelContainer" unique_id=1016914453]
 custom_minimum_size = Vector2(64, 80)
 offset_right = 64.0
 offset_bottom = 80.0
 focus_mode = 1
 script = ExtResource("2")
 
-[node name="VB" type="VBoxContainer" parent="."]
+[node name="VB" type="VBoxContainer" parent="." unique_id=836996346]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="VB"]
+[node name="TextureRect" type="TextureRect" parent="VB" unique_id=538875343]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 expand_mode = 1
 
-[node name="Label" type="Label" parent="VB"]
+[node name="Label" type="Label" parent="VB" unique_id=1291463039]
 layout_mode = 2
 text = "Texture"
